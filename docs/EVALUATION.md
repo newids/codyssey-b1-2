@@ -293,5 +293,5 @@ grep -rn "dangerouslySetInnerHTML\|innerHTML" src   # 0건
 ## 7. 알려진 제한 · 후속 작업
 
 - **Google OAuth 클라이언트**는 Google Cloud Console 소유자만 발급할 수 있어 코드·CLI로 자동화되지 않았다. [SETUP.md §3](SETUP.md#3-google-로그인-켜기) 절차(5분)로 켠다. 그때까지는 이메일 링크 로그인으로 전 기능이 동작한다.
-- Supabase Auth의 **Site URL / Redirect URLs**는 `supabase/config.toml`에 선언되어 있으나, 이 세션에서는 CLI의 키체인 접근 확인 대기로 `supabase config push`가 완료되지 않았다. 대시보드 Authentication → URL Configuration에서 표의 값을 넣거나, 터미널에서 `supabase config push --yes`를 직접 실행하면 된다.
+- Supabase Auth의 **Site URL / Redirect URLs**는 `supabase/config.toml`에 선언되어 있고 `supabase config push`로 원격에 반영되어 있다 (2026-09-22).
 - 테스트는 React 로직에 집중했고 페이지 통합 테스트(Supabase 모킹)는 없다. E2E는 §6 수동 시나리오로 대신한다.

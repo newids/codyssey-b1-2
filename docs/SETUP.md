@@ -132,5 +132,6 @@ vercel --prod --yes
 | Supabase 프로젝트 | `codyssey-b1-2` (ref `tpkuinfsgsjwthwnxxqq`, Seoul) |
 | 마이그레이션 | `20260921000000_init.sql` 적용 완료 |
 | 환경변수 | Vercel production / preview / development 3곳 등록 완료 |
+| Auth Site URL / Redirect URLs | `supabase config push`로 반영 완료 (2026-09-22) |
 | 이메일 매직 링크 로그인 | 동작 (Supabase 기본 설정) |
 | Google 로그인 | **3번 절차 필요** — OAuth 클라이언트 ID/보안 비밀은 Google Cloud Console 소유자만 발급 가능 |
