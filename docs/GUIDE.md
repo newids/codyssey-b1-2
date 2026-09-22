@@ -184,4 +184,4 @@ export function useAsync<T>(fetcher: () => Promise<T>, initialData: T, enabled =
 - [x] 폼 검증 · 에러 표시 · 제출 중 · 실패 표시
 - [x] 상태 → 렌더링 지점 3개 이상 (README에 7개 표)
 - [x] 보너스: 전역 상태(Context 3개), 메모이제이션, 인증 + 보호 라우트
-- [ ] Google OAuth 클라이언트 등록 — Google Cloud Console 소유자 작업 ([SETUP.md §3](SETUP.md#3-google-로그인-켜기)). 이메일 링크 로그인은 이미 동작
+- [x] Google 로그인 — GIS 버튼 + `signInWithIdToken` ([SETUP.md §3](SETUP.md#3-google-로그인-켜기))

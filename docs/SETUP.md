@@ -102,7 +102,26 @@ client_id = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID)"
 secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
 ```
 
-앱 쪽은 이미 되어 있다. `src/lib/api/auth.ts`의 `signInWithGoogle()`이 `supabase.auth.signInWithOAuth({ provider: 'google' })`를 호출하고, 로그인 후 `/login`으로 돌아오면 `LoginPage`의 `useEffect`가 원래 가려던 경로로 보낸다.
+### 3.1 앱 쪽 동작 — Google Identity Services(GIS) + `signInWithIdToken`
+
+기본 경로는 Supabase 리다이렉트가 아니라 **Google 버튼을 앱에서 직접 띄우는** 방식이다. 리다이렉트 방식은 Google 동의 화면에 `…supabase.co` 도메인이 표시되기 때문이다.
+
+1. `index.html`이 `https://accounts.google.com/gsi/client`를 로드한다.
+2. `src/components/auth/GoogleSignInButton.tsx`가 `createNoncePair()`로 nonce를 만들고, `google.accounts.id.initialize({ client_id, nonce: sha256(nonce) })` 후 버튼을 그린다.
+3. 사용자가 계정을 고르면 콜백이 ID 토큰(credential)을 받는다.
+4. `src/lib/api/auth.ts` `signInWithGoogleIdToken(credential, nonce)` → `supabase.auth.signInWithIdToken({ provider: 'google', token, nonce })`. Supabase가 토큰 서명과 nonce 해시를 검증하고 세션을 만든다.
+5. `AuthContext`가 세션 변경을 감지하고 `LoginPage`의 `useEffect`가 원래 가려던 경로로 보낸다.
+
+필요한 설정:
+
+| 위치 | 값 |
+| --- | --- |
+| `.env` / Vercel env | `VITE_GOOGLE_CLIENT_ID=<웹 클라이언트 ID>` (공개값) |
+| Google 클라이언트 "승인된 JavaScript 원본" | `https://codyssey-b1-2-react.vercel.app`, `http://localhost:5173` |
+| Supabase Providers → Google | Client ID / Secret (위 5번과 동일). `signInWithIdToken`은 토큰의 `aud`가 이 Client ID와 같은지 검사한다 |
+| CSP (`vercel.json`) | `script-src`, `style-src`, `connect-src`, `frame-src`에 `https://accounts.google.com` |
+
+GIS 스크립트를 못 불러오거나(광고 차단기) `VITE_GOOGLE_CLIENT_ID`가 없으면 버튼이 자동으로 **예비 경로**(`signInWithGoogle()` — Supabase 리다이렉트)로 바뀐다. 이 경우에만 동의 화면에 Supabase 도메인이 보인다.
 
 > Google을 아직 켜지 않았어도 **이메일 매직 링크** 로그인은 바로 동작한다 (Supabase 기본 SMTP, 시간당 발송 제한 있음). 평가 시 Google 설정이 안 되어 있으면 이메일 로그인으로 전 기능을 확인할 수 있다.
 
@@ -134,4 +153,4 @@ vercel --prod --yes
 | 환경변수 | Vercel production / preview / development 3곳 등록 완료 |
 | Auth Site URL / Redirect URLs | `supabase config push`로 반영 완료 (2026-09-22) |
 | 이메일 매직 링크 로그인 | 동작 (Supabase 기본 설정) |
-| Google 로그인 | **3번 절차 필요** — OAuth 클라이언트 ID/보안 비밀은 Google Cloud Console 소유자만 발급 가능 |
+| Google 로그인 | 설정 완료 (2026-09-22). GIS 버튼 + `signInWithIdToken` 방식, `VITE_GOOGLE_CLIENT_ID` Vercel 3환경 등록 |

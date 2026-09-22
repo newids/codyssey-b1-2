@@ -142,7 +142,7 @@ React 18.3 · TypeScript 5.5 · React Router 6.26 · @supabase/supabase-js 2.x �
 | --- | --- |
 | 전역 상태 | `AuthContext`(로그인 사용자·세션·isReady), `ThemeContext`(테마 + localStorage), `ToastContext`(알림) |
 | 메모이제이션 | `React.memo`: `NoteCard.tsx:17`, `LessonCard.tsx:16` · `useMemo`: 필터(`LessonListPage:22`), 검증(`useNoteForm:29`), 최고점(`useQuizAttempts` `bestByLesson`), 퀴즈 채점 · `useCallback`: 모든 fetcher, `toggle`, `record`, `showToast` |
-| 인증 + 보호 라우트 | Supabase Auth Google OAuth + 이메일 매직 링크 (`lib/api/auth.ts`). `ProtectedRoute.tsx:9-10` — 세션 복원 전 로딩, 비로그인 `/login`으로 `state.from` 보존 → 로그인 후 복귀 (`LoginPage` `useEffect`) |
+| 인증 + 보호 라우트 | Supabase Auth — Google 로그인은 GIS 버튼이 준 ID 토큰을 `signInWithIdToken`으로 교환 (`components/auth/GoogleSignInButton.tsx`, `lib/api/auth.ts`, nonce 검증), 이메일 매직 링크. `ProtectedRoute.tsx:9-10` — 세션 복원 전 로딩, 비로그인 `/login`으로 `state.from` 보존 → 로그인 후 복귀 (`LoginPage` `useEffect`) |
 
 ### 2.10 제약 사항
 
@@ -243,7 +243,7 @@ React 18.3 · TypeScript 5.5 · React Router 6.26 · @supabase/supabase-js 2.x �
 
 ```bash
 pnpm typecheck        # 타입 에러 0
-pnpm test             # 11 files, 57 tests
+pnpm test             # 12 files, 59 tests
 pnpm build            # dist/ 생성, gzip JS ≈ 140 kB (supabase-js 포함), CSS ≈ 8 kB
 git check-ignore .env # → .env
 grep -rn "dangerouslySetInnerHTML\|innerHTML" src   # 0건
@@ -292,6 +292,6 @@ grep -rn "dangerouslySetInnerHTML\|innerHTML" src   # 0건
 
 ## 7. 알려진 제한 · 후속 작업
 
-- **Google OAuth 클라이언트**는 Google Cloud Console 소유자만 발급할 수 있어 코드·CLI로 자동화되지 않았다. [SETUP.md §3](SETUP.md#3-google-로그인-켜기) 절차(5분)로 켠다. 그때까지는 이메일 링크 로그인으로 전 기능이 동작한다.
+- Google 로그인은 설정 완료 (2026-09-22). GIS 스크립트가 차단된 환경에서는 Supabase 리다이렉트 방식으로 자동 전환되며, 그 경우 동의 화면에 Supabase 도메인이 표시된다.
 - Supabase Auth의 **Site URL / Redirect URLs**는 `supabase/config.toml`에 선언되어 있고 `supabase config push`로 원격에 반영되어 있다 (2026-09-22).
 - 테스트는 React 로직에 집중했고 페이지 통합 테스트(Supabase 모킹)는 없다. E2E는 §6 수동 시나리오로 대신한다.

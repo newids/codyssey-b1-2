@@ -25,6 +25,10 @@ React 18 + React Router 6 + Supabase로 만든 **React 학습용 SPA**입니다.
 | --- | --- |
 | ![노트 빈 상태](images/screenshots/notes-empty.png) | ![모바일](images/screenshots/lessons-mobile.png) |
 
+| 로그인 — Google Identity Services 버튼 + 이메일 링크 |
+| --- |
+| ![로그인](images/screenshots/login.png) |
+
 > 배포 URL에서 캡쳐. 2026-09-22.
 
 ## 실행 방법
@@ -33,7 +37,7 @@ React 18 + React Router 6 + Supabase로 만든 **React 학습용 SPA**입니다.
 git clone https://github.com/newids/codyssey-b1-2.git
 cd codyssey-b1-2
 pnpm install          # 또는 npm install
-cp .env.example .env  # VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY 입력
+cp .env.example .env  # VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, VITE_GOOGLE_CLIENT_ID 입력
 pnpm dev              # http://localhost:5173
 ```
 
@@ -42,7 +46,7 @@ pnpm dev              # http://localhost:5173
 | `pnpm dev` | 개발 서버 |
 | `pnpm build` | 타입 검사 + 프로덕션 빌드 (`dist/`) |
 | `pnpm preview` | 빌드 결과 미리보기 |
-| `pnpm test` | Vitest 테스트 (57개) |
+| `pnpm test` | Vitest 테스트 (59개) |
 | `pnpm test:coverage` | 커버리지 리포트 |
 
 Supabase 프로젝트 생성·스키마·Google 로그인·Vercel 배포 절차는 [docs/SETUP.md](docs/SETUP.md)에 있습니다.
@@ -55,7 +59,7 @@ Supabase 프로젝트 생성·스키마·Google 로그인·Vercel 배포 절차�
 | 라우팅 | React Router 6.26 — 라우트 10개, 중첩 레이아웃, 보호 라우트, `useParams` / `useSearchParams` |
 | 상태 | 지역 state(`useState`), 전역 Context 3개(Auth · Theme · Toast), 커스텀 훅 6개, `useMemo` / `useCallback` / `React.memo` |
 | 백엔드 | Supabase (Postgres + Auth + RLS). `@supabase/supabase-js` 2.x |
-| 인증 | Supabase Auth — Google OAuth, 이메일 매직 링크 |
+| 인증 | Supabase Auth — Google 로그인(Google Identity Services 버튼 + `signInWithIdToken`, nonce 검증), 이메일 매직 링크 |
 | 스타일 | CSS Modules + CSS 커스텀 프로퍼티(oklch 색, clamp() 유동 크기), 다크 모드, `prefers-reduced-motion` |
 | 빌드·테스트 | Vite 5, Vitest 2 + Testing Library |
 | 배포 | Vercel (SPA rewrite + 보안 헤더), 환경변수는 Vercel 대시보드 |
@@ -127,12 +131,12 @@ URL /notes/:id
 | --- | --- |
 | 전역 상태 | `AuthContext`(로그인 사용자), `ThemeContext`(테마, localStorage 유지), `ToastContext`(알림) |
 | 성능 최적화 | `React.memo(NoteCard)`, `React.memo(LessonCard)`, `useMemo`(필터·검증·최고점 계산), `useCallback`(fetcher·핸들러) |
-| 인증 | Supabase Auth Google OAuth + 이메일 매직 링크, `ProtectedRoute`로 3개 라우트 보호, 로그인 후 원래 경로 복귀 |
+| 인증 | Supabase Auth — Google(GIS 버튼 → ID 토큰 → `signInWithIdToken`) + 이메일 매직 링크, `ProtectedRoute`로 3개 라우트 보호, 로그인 후 원래 경로 복귀 |
 
 ## 테스트
 
 ```bash
-pnpm test              # 11개 파일, 57개 테스트
+pnpm test              # 12개 파일, 59개 테스트
 pnpm test:coverage
 ```
 

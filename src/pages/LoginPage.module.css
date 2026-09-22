@@ -4,7 +4,6 @@
 .title { margin: 0; font-size: var(--text-xl); }
 .lead { margin: 0; color: var(--color-ink-2); font-size: var(--text-sm); }
 .error { padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--color-danger-soft); color: var(--color-danger); font-size: var(--text-sm); }
-.googleButton { width: 100%; }
 .divider { display: flex; align-items: center; gap: var(--space-3); color: var(--color-ink-3); font-size: var(--text-xs); }
 .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--color-line); }
 .form { display: flex; flex-direction: column; gap: var(--space-2); }
