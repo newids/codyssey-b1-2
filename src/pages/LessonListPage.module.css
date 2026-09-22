@@ -1,0 +1,7 @@
+.progressCard { margin-bottom: var(--space-5); }
+.filters { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+.filter { display: inline-flex; align-items: center; gap: var(--space-2); padding: 0.45rem 0.9rem; border-radius: var(--radius-pill); border: 1px solid var(--color-line-strong); background: var(--color-surface); color: var(--color-ink-2); font-size: var(--text-sm); font-weight: 500; cursor: pointer; transition: all var(--dur-fast); }
+.filter:hover { border-color: var(--color-accent); color: var(--color-ink); }
+.filterActive { background: var(--color-ink); color: var(--color-paper); border-color: var(--color-ink); }
+.count { font-family: var(--font-mono); font-size: var(--text-xs); opacity: 0.7; }
+.grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }

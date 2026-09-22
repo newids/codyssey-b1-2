@@ -1,0 +1,118 @@
+/* 디자인 토큰 — 색은 oklch, 크기는 clamp()로 유동. 다크 모드는 [data-theme] + prefers-color-scheme */
+:root {
+  color-scheme: light;
+
+  /* 색 */
+  --color-paper: oklch(98% 0.008 85);
+  --color-paper-2: oklch(95.5% 0.012 85);
+  --color-surface: oklch(100% 0 0);
+  --color-ink: oklch(22% 0.03 260);
+  --color-ink-2: oklch(42% 0.025 260);
+  --color-ink-3: oklch(60% 0.02 260);
+  --color-line: oklch(88% 0.012 85);
+  --color-line-strong: oklch(78% 0.015 85);
+
+  --color-accent: oklch(58% 0.12 220);       /* React 하늘색 계열 */
+  --color-accent-strong: oklch(46% 0.13 220);
+  --color-accent-soft: oklch(94% 0.04 220);
+  --color-accent-ink: oklch(100% 0 0);
+
+  --color-success: oklch(58% 0.14 150);
+  --color-success-soft: oklch(94% 0.05 150);
+  --color-danger: oklch(56% 0.19 25);
+  --color-danger-soft: oklch(95% 0.04 25);
+  --color-warn: oklch(72% 0.15 75);
+  --color-warn-soft: oklch(95% 0.06 85);
+
+  --color-code-bg: oklch(24% 0.03 260);
+  --color-code-ink: oklch(92% 0.02 85);
+
+  /* 타이포 */
+  --font-display: 'Gowun Batang', 'Noto Serif KR', Georgia, serif;
+  --font-body: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --text-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9rem);
+  --text-md: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  --text-xl: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
+  --text-2xl: clamp(1.9rem, 1.4rem + 2.2vw, 3rem);
+  --text-3xl: clamp(2.4rem, 1.6rem + 3.6vw, 4.2rem);
+
+  /* 간격 */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: clamp(3rem, 2rem + 4vw, 6rem);
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --container: 72rem;
+
+  /* 형태 */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px oklch(20% 0.03 260 / 0.06), 0 1px 1px oklch(20% 0.03 260 / 0.04);
+  --shadow-md: 0 10px 30px -12px oklch(20% 0.03 260 / 0.25), 0 2px 6px oklch(20% 0.03 260 / 0.06);
+  --shadow-lg: 0 30px 60px -20px oklch(20% 0.05 260 / 0.35);
+
+  /* 모션 */
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 480ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --color-paper: oklch(17% 0.02 260);
+    --color-paper-2: oklch(21% 0.022 260);
+    --color-surface: oklch(24% 0.024 260);
+    --color-ink: oklch(94% 0.012 85);
+    --color-ink-2: oklch(78% 0.015 85);
+    --color-ink-3: oklch(62% 0.015 85);
+    --color-line: oklch(31% 0.02 260);
+    --color-line-strong: oklch(40% 0.02 260);
+    --color-accent: oklch(78% 0.1 210);
+    --color-accent-strong: oklch(86% 0.08 210);
+    --color-accent-soft: oklch(30% 0.05 220);
+    --color-accent-ink: oklch(15% 0.03 260);
+    --color-success-soft: oklch(28% 0.06 150);
+    --color-danger: oklch(72% 0.16 25);
+    --color-danger-soft: oklch(28% 0.06 25);
+    --color-warn-soft: oklch(30% 0.06 85);
+    --color-code-bg: oklch(13% 0.02 260);
+    --shadow-md: 0 10px 30px -12px oklch(0% 0 0 / 0.6), 0 2px 6px oklch(0% 0 0 / 0.3);
+    --shadow-lg: 0 30px 60px -20px oklch(0% 0 0 / 0.7);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-paper: oklch(17% 0.02 260);
+  --color-paper-2: oklch(21% 0.022 260);
+  --color-surface: oklch(24% 0.024 260);
+  --color-ink: oklch(94% 0.012 85);
+  --color-ink-2: oklch(78% 0.015 85);
+  --color-ink-3: oklch(62% 0.015 85);
+  --color-line: oklch(31% 0.02 260);
+  --color-line-strong: oklch(40% 0.02 260);
+  --color-accent: oklch(78% 0.1 210);
+  --color-accent-strong: oklch(86% 0.08 210);
+  --color-accent-soft: oklch(30% 0.05 220);
+  --color-accent-ink: oklch(15% 0.03 260);
+  --color-success-soft: oklch(28% 0.06 150);
+  --color-danger: oklch(72% 0.16 25);
+  --color-danger-soft: oklch(28% 0.06 25);
+  --color-warn-soft: oklch(30% 0.06 85);
+  --color-code-bg: oklch(13% 0.02 260);
+  --shadow-md: 0 10px 30px -12px oklch(0% 0 0 / 0.6), 0 2px 6px oklch(0% 0 0 / 0.3);
+  --shadow-lg: 0 30px 60px -20px oklch(0% 0 0 / 0.7);
+}

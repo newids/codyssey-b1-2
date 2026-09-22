@@ -1,0 +1,4 @@
+.avatar {
+  display: inline-grid; place-items: center; border-radius: 50%; flex-shrink: 0;
+  background: var(--color-accent-soft); color: var(--color-accent-strong); font-weight: 700; object-fit: cover;
+}

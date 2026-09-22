@@ -1,0 +1,12 @@
+.figure { margin: var(--space-4) 0 var(--space-5); }
+.caption { font-size: var(--text-xs); color: var(--color-ink-3); margin-bottom: var(--space-2); font-family: var(--font-mono); }
+.pre {
+  position: relative; margin: 0; padding: var(--space-4) var(--space-5);
+  background: var(--color-code-bg); color: var(--color-code-ink);
+  border-radius: var(--radius-md); overflow-x: auto; font-size: var(--text-sm); line-height: 1.7;
+  box-shadow: var(--shadow-md);
+}
+.pre::after {
+  content: attr(data-lang); position: absolute; inset-block-start: 0.5rem; inset-inline-end: 0.75rem;
+  font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5;
+}

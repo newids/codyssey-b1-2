@@ -1,0 +1,12 @@
+.toggle {
+  position: relative; width: 3.25rem; height: 1.85rem; padding: 0; border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-strong); background: var(--color-paper-2); cursor: pointer;
+  transition: background-color var(--dur-base);
+}
+.knob {
+  position: absolute; inset-block-start: 2px; inset-inline-start: 2px;
+  display: grid; place-items: center; width: calc(1.85rem - 6px); height: calc(1.85rem - 6px); border-radius: 50%;
+  background: var(--color-surface); color: var(--color-ink); font-size: 0.8rem; box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-base) var(--ease-spring);
+}
+.toggle[aria-pressed='true'] .knob { transform: translateX(1.4rem); }
