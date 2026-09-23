@@ -14,9 +14,11 @@
 .sideTitle { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600; color: var(--color-ink-2); margin-bottom: var(--space-3); }
 .sideText { margin: 0 0 var(--space-3); font-size: var(--text-sm); color: var(--color-ink-2); }
 .sideButton { width: 100%; }
+.sideButton > span { min-width: 0; }
 .sideLink { text-decoration: none; }
-.pager { display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-sm); }
-.pager a { display: inline-flex; align-items: center; gap: 0.3em; }
+.pager { display: flex; flex-direction: column; gap: var(--space-2); }
+.pagerLink { text-decoration: none; display: block; }
+.pagerLabel { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
 .usedIn { margin-top: var(--space-6); padding: var(--space-4) var(--space-5); border-radius: var(--radius-lg); background: var(--glass-bg-soft); box-shadow: inset 0 0 0 1px var(--color-line); }
 .usedInTitle { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-2); }
 .usedIn ul { margin: 0; padding-left: 1.2em; font-size: var(--text-sm); line-height: 1.9; }

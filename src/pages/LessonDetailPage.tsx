@@ -5,6 +5,7 @@ import { useToast } from '@/context/ToastContext';
 import { useLessonProgress } from '@/hooks/useLessonProgress';
 import { useQuizAttempts } from '@/hooks/useQuizAttempts';
 import { useNotes } from '@/hooks/useNotes';
+import { useOpenNoteComposer } from '@/hooks/useOpenNoteComposer';
 import { toUserMessage } from '@/lib/errors';
 import { LessonContent } from '@/components/lessons/LessonContent';
 import { Quiz } from '@/components/lessons/Quiz';
@@ -24,6 +25,7 @@ export function LessonDetailPage() {
   const progress = useLessonProgress(user?.id);
   const quiz = useQuizAttempts(user?.id);
   const relatedNotes = useNotes({ lessonSlug: slug });
+  const openComposer = useOpenNoteComposer();
 
   if (!lesson) return <NotFoundPage />;
 
@@ -84,6 +86,13 @@ export function LessonDetailPage() {
 
         <aside className={styles.side}>
           <div className={['glass', styles.sideCard].join(' ')}>
+            <h3 className={styles.sideTitle}>노트 남기기</h3>
+            <p className={styles.sideText}>배운 내용을 내 말로 정리하면 오래 남습니다.</p>
+            <Button variant="secondary" className={styles.sideButton} icon={<Icon name="plus" size={16} />} onClick={() => openComposer(lesson.slug)}>
+              이 레슨에 노트 작성
+            </Button>
+          </div>
+          <div className={['glass', styles.sideCard].join(' ')}>
             <h3 className={styles.sideTitle}>진도</h3>
             {user ? (
               <Button
@@ -100,16 +109,25 @@ export function LessonDetailPage() {
               </p>
             )}
           </div>
-          <div className={['glass', styles.sideCard].join(' ')}>
-            <h3 className={styles.sideTitle}>노트 남기기</h3>
-            <p className={styles.sideText}>배운 내용을 내 말로 정리하면 오래 남습니다.</p>
-            <Link to="/notes/new" state={{ lessonSlug: lesson.slug }} className={styles.sideLink}>
-              <Button variant="secondary" className={styles.sideButton}>이 레슨에 노트 작성</Button>
-            </Link>
-          </div>
           <nav className={styles.pager} aria-label="레슨 이동">
-            {prev ? <Link to={`/lessons/${prev.slug}`}><Icon name="arrow-left" size={14} /> {prev.title}</Link> : <span />}
-            {next ? <Link to={`/lessons/${next.slug}`}>{next.title} <Icon name="arrow-right" size={14} /></Link> : <Link to="/lessons">목록으로</Link>}
+            {prev ? (
+              <Link to={`/lessons/${prev.slug}`} className={styles.pagerLink}>
+                <Button variant="secondary" className={styles.sideButton} icon={<Icon name="arrow-left" size={16} />}>
+                  <span className={styles.pagerLabel}>이전 · {prev.order}. {prev.title}</span>
+                </Button>
+              </Link>
+            ) : null}
+            {next ? (
+              <Link to={`/lessons/${next.slug}`} className={styles.pagerLink}>
+                <Button className={styles.sideButton} icon={<Icon name="arrow-right" size={16} />}>
+                  <span className={styles.pagerLabel}>다음 · {next.order}. {next.title}</span>
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/lessons" className={styles.pagerLink}>
+                <Button className={styles.sideButton} icon={<Icon name="book" size={16} />}>모든 레슨 완료 · 목록으로</Button>
+              </Link>
+            )}
           </nav>
         </aside>
       </div>

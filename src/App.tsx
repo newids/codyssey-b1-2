@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation, type Location } from 'react-router-dom';
 import { AuthProvider } from '@/context/AuthContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { ToastProvider } from '@/context/ToastContext';
@@ -14,11 +14,19 @@ import { NoteNewPage } from '@/pages/NoteNewPage';
 import { NoteEditPage } from '@/pages/NoteEditPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { NoteComposerModal } from '@/components/notes/NoteComposerModal';
 
-/** 라우트 10개. 보호 라우트 3개(/notes/new, /notes/:id/edit, /profile)는 ProtectedRoute 아래에 둔다. */
+/**
+ * 라우트 10개. 보호 라우트 3개(/notes/new, /notes/:id/edit, /profile)는 ProtectedRoute 아래에 둔다.
+ * /notes/new 는 다른 화면에서 열면(state.backgroundLocation) 그 화면 위의 팝업으로,
+ * 주소를 직접 치면 전체 페이지로 그린다.
+ */
 export function AppRoutes() {
+  const location = useLocation();
+  const background = (location.state as { backgroundLocation?: Location } | null)?.backgroundLocation;
   return (
-    <Routes>
+    <>
+    <Routes location={background ?? location}>
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -34,6 +42,14 @@ export function AppRoutes() {
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
+    {background && (
+      <Routes>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/notes/new" element={<NoteComposerModal />} />
+        </Route>
+      </Routes>
+    )}
+    </>
   );
 }
 

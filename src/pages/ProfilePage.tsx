@@ -3,6 +3,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useLessonProgress } from '@/hooks/useLessonProgress';
 import { useQuizAttempts } from '@/hooks/useQuizAttempts';
 import { useNotes } from '@/hooks/useNotes';
+import { useOpenNoteComposer } from '@/hooks/useOpenNoteComposer';
 import { LESSONS } from '@/data/lessons';
 import { formatDate } from '@/lib/format';
 import { PageHeader } from '@/components/layout/PageHeader';
@@ -21,6 +22,7 @@ export function ProfilePage() {
   const progress = useLessonProgress(user?.id);
   const quiz = useQuizAttempts(user?.id);
   const myNotes = useNotes({ ownerId: user?.id });
+  const openComposer = useOpenNoteComposer();
 
   const completedList = LESSONS.filter((l) => progress.completedSlugs.has(l.slug));
   const solvedCount = Object.keys(quiz.bestByLesson).length;
@@ -97,7 +99,7 @@ export function ProfilePage() {
       <section className={styles.notes} aria-labelledby="my-notes-title">
         <div className={styles.notesHead}>
           <h2 id="my-notes-title" className={styles.sectionTitle}>내가 쓴 노트</h2>
-          <Link to="/notes/new"><Button size="sm">+ 새 노트</Button></Link>
+          <Button size="sm" onClick={() => openComposer()}>+ 새 노트</Button>
         </div>
         <AsyncBoundary
           status={myNotes.status}

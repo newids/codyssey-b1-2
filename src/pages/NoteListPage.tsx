@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { useNotes } from '@/hooks/useNotes';
 import { useDebounce } from '@/hooks/useDebounce';
+import { useOpenNoteComposer } from '@/hooks/useOpenNoteComposer';
 import type { NoteFilter } from '@/lib/types';
 import { LESSONS } from '@/data/lessons';
 import { PageHeader } from '@/components/layout/PageHeader';
@@ -22,6 +23,7 @@ export function NoteListPage() {
   const debouncedSearch = useDebounce(search, 300);
   const filter: NoteFilter = params.get('filter') === 'mine' && user ? 'mine' : 'all';
   const lessonSlug = params.get('lesson') ?? '';
+  const openComposer = useOpenNoteComposer();
 
   const notes = useNotes({
     ownerId: filter === 'mine' ? user?.id : undefined,
@@ -48,7 +50,7 @@ export function NoteListPage() {
         description="배운 것을 내 말로 다시 쓴 기록. 다른 학습자의 공개 노트도 읽을 수 있습니다."
         actions={
           user ? (
-            <Link to="/notes/new"><Button>+ 새 노트</Button></Link>
+            <Button onClick={() => openComposer(lessonSlug || undefined)}>+ 새 노트</Button>
           ) : (
             <Link to="/login" state={{ from: '/notes/new' }}><Button variant="secondary">로그인 후 작성</Button></Link>
           )
@@ -97,7 +99,7 @@ export function NoteListPage() {
         empty={{
           title: debouncedSearch || lessonSlug ? '조건에 맞는 노트가 없습니다' : '표시할 노트가 없습니다',
           description: debouncedSearch || lessonSlug ? '검색어나 레슨 필터를 바꿔 보세요.' : '첫 학습 노트를 작성해 보세요.',
-          action: user ? <Link to="/notes/new"><Button size="sm">노트 작성하기</Button></Link> : undefined,
+          action: user ? <Button size="sm" onClick={() => openComposer(lessonSlug || undefined)}>노트 작성하기</Button> : undefined,
         }}
       >
         <NoteGrid notes={notes.data} currentUserId={user?.id} />

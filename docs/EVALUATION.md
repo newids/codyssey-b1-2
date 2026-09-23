@@ -101,7 +101,7 @@ React 18.3 · TypeScript 5.5 · React Router 6.26 · @supabase/supabase-js 2.x �
 | --- | --- | --- |
 | 목록 조회 | `listNotes({ ownerId, lessonSlug, search })` — `.select('*, author:profiles(…)')` | `NoteListPage` → `useNotes` → `NoteGrid` |
 | 상세 조회 | `getNote(id)` `.eq('id', id).single()` | `NoteDetailPage` → `useParams` → `useNote(id)` |
-| 등록 | `createNote(userId, input)` `.insert().select().single()` | `NoteNewPage` 제출 → 성공 시 `navigate('/notes/${created.id}')` + Toast |
+| 등록 | `createNote(userId, input)` `.insert().select().single()` | `NoteComposer` 제출 → 성공 시 `navigate('/notes/${created.id}')` + Toast. 레슨·목록·프로필의 "새 노트"는 `useOpenNoteComposer`가 `state.backgroundLocation`을 실어 `/notes/new`로 이동 → `App.tsx`가 배경 화면 위에 `NoteComposerModal`(네이티브 `<dialog>`)을 그린다. 주소 직접 접속은 `NoteNewPage` 전체 페이지 |
 | 수정 | `updateNote(id, input)` `.update().eq('id', id)` | `NoteEditPage` 기존 값 로드 → 제출 → `navigate('/notes/${id}')` + Toast |
 | 삭제 | `deleteNote(id)` | `NoteDetailPage.tsx:28-34` 인라인 확인 → 삭제 → `navigate('/notes')` + Toast |
 
@@ -270,10 +270,12 @@ grep -rn "dangerouslySetInnerHTML\|innerHTML" src   # 0건
 | 8 | `/notes` 접속 (데이터 없음) | 스켈레톤 → "표시할 노트가 없습니다" + 안내 |
 | 9 | `/notes/new` 비로그인 접속 | `/login`으로 이동 |
 | 10 | 로그인 (이메일 링크 또는 Google) | 헤더에 이름·아바타, `/notes/new`로 복귀 |
+| 10-1 | 레슨 상세 "이 레슨에 노트 작성" 클릭 | 현재 화면 위에 팝업(주소는 `/notes/new`), Esc·배경 클릭·닫기 버튼으로 닫힘, 레슨이 미리 선택됨 |
+| 10-2 | 레슨 상세 오른쪽 "다음 ·" 버튼 | 다음 레슨으로 이동, 마지막 레슨은 "목록으로" |
 | 11 | 빈 폼 저장 클릭 | 제목·내용 아래 빨간 에러, 저장 안 됨 |
 | 12 | 제목 1자 입력 후 blur | "제목은 2자 이상" |
 | 13 | 제목·내용 입력 | 오른쪽 미리보기 실시간 갱신, 글자 수 카운터 |
-| 14 | 저장 | 버튼 "저장 중…" 스피너 → 상세 페이지로 이동 + "노트를 저장했습니다" Toast |
+| 14 | 저장 | 버튼 "저장 중…" 스피너 → 팝업이 닫히고 상세 페이지로 이동 + "노트를 저장했습니다" Toast |
 | 15 | 상세에서 새로고침 | 같은 노트 (rewrite 확인) |
 | 16 | "수정" → 내용 변경 → 저장 | 상세로 복귀, "(수정됨)" 표시, Toast |
 | 17 | "삭제" → "삭제 확인" | `/notes`로 이동, 목록에서 사라짐, Toast |

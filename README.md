@@ -75,7 +75,7 @@ Supabase 프로젝트 생성·스키마·Google 로그인·Vercel 배포 절차�
 | `/lessons/:slug` | LessonDetailPage | | 본문, 연습 문제(채점·점수 저장), 완료 표시, 관련 노트 |
 | `/notes` | NoteListPage | | 노트 목록(검색·레슨 필터·내 노트, URL 쿼리 동기화) |
 | `/notes/:id` | NoteDetailPage | | 상세, 본인이면 수정·삭제 |
-| `/notes/new` | NoteNewPage | ✓ | 등록 폼 (검증·미리보기·제출 중 상태) |
+| `/notes/new` | NoteNewPage / NoteComposerModal | ✓ | 등록 폼 (검증·미리보기·제출 중 상태). 레슨·목록·프로필에서 열면 현재 화면 위 **팝업**(`<dialog>`), 주소를 직접 치면 전체 페이지 |
 | `/notes/:id/edit` | NoteEditPage | ✓ | 수정 폼 |
 | `/profile` | ProfilePage | ✓ | 진도, 퀴즈 최고 점수, 내 노트 |
 | `*` | NotFoundPage | | 404 |
@@ -86,13 +86,13 @@ Supabase 프로젝트 생성·스키마·Google 로그인·Vercel 배포 절차�
 src/
   pages/            라우트 단위 화면 10개 — 데이터를 가져오고 조립만 한다
   components/
-    ui/             재사용 UI 14개 — Button, Input/Textarea, Select, Card, Badge, Loading, ErrorState,
-                    EmptyState, AsyncBoundary, ProgressBar, Toast, ThemeToggle, CodeBlock, Avatar
+    ui/             재사용 UI 16개 — Button, Input/Textarea, Select, Card, Badge, Loading, ErrorState,
+                    EmptyState, AsyncBoundary, ProgressBar, Toast, ThemeToggle, CodeBlock, Avatar, Icon, Modal
     layout/         Layout, Header, Footer, PageHeader
-    notes/          NoteCard, NoteGrid, NoteForm
+    notes/          NoteCard, NoteGrid, NoteForm, NoteComposer, NoteComposerModal(팝업)
     lessons/        LessonCard, LessonContent, Quiz
     auth/           ProtectedRoute
-  hooks/            useAsync, useNotes(useNote), useNoteForm, useLessonProgress, useQuizAttempts, useDebounce
+  hooks/            useAsync, useNotes(useNote), useNoteForm, useLessonProgress, useQuizAttempts, useDebounce, useOpenNoteComposer
   context/          AuthContext, ThemeContext, ToastContext
   lib/              supabase 클라이언트, api/(notes · progress · auth), validation, errors, format, quiz, types
   data/lessons.ts   레슨 8개 본문 + 퀴즈 (정적 데이터)
