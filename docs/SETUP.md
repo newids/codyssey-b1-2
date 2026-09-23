@@ -121,7 +121,9 @@ secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
 | Supabase Providers → Google | Client ID / Secret (위 5번과 동일). `signInWithIdToken`은 토큰의 `aud`가 이 Client ID와 같은지 검사한다 |
 | CSP (`vercel.json`) | `script-src`, `style-src`, `connect-src`, `frame-src`에 `https://accounts.google.com` |
 
-GIS 스크립트를 못 불러오거나(광고 차단기) `VITE_GOOGLE_CLIENT_ID`가 없으면 버튼이 자동으로 **예비 경로**(`signInWithGoogle()` — Supabase 리다이렉트)로 바뀐다. 이 경우에만 동의 화면에 Supabase 도메인이 보인다.
+GIS 스크립트를 못 불러오거나(광고 차단기) `VITE_GOOGLE_CLIENT_ID`가 없으면 버튼이 자동으로 **예비 경로**(`signInWithGoogle()` — Supabase 리다이렉트)로 바뀐다. 버튼 아래 "리다이렉트 방식으로 로그인" 링크로 언제든 수동 전환할 수도 있다. 이 경우에만 동의 화면에 Supabase 도메인이 보인다.
+
+> **`Error 400: origin_mismatch`** 가 뜨면 접속한 주소의 origin이 Google 클라이언트의 "승인된 JavaScript 원본"에 없는 것이다. `https://codyssey-b1-2-react.vercel.app` 과 `http://localhost:5173` 을 경로·끝 슬래시 없이 등록하고 몇 분 기다린다. 개별 배포 URL(`…-jss-projects.vercel.app`)이나 다른 별칭으로 접속하면 항상 실패한다.
 
 > Google을 아직 켜지 않았어도 **이메일 매직 링크** 로그인은 바로 동작한다 (Supabase 기본 SMTP, 시간당 발송 제한 있음). 평가 시 Google 설정이 안 되어 있으면 이메일 로그인으로 전 기능을 확인할 수 있다.
 

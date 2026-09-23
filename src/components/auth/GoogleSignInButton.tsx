@@ -91,6 +91,23 @@ export function GoogleSignInButton({ onCredential, onFallback, disabled = false 
       <div ref={containerRef} className={[styles.slot, status === 'loading' ? styles.hidden : ''].join(' ')} />
       {status === 'loading' && <div className={styles.placeholder} role="status">Google 로그인 준비 중…</div>}
       {status === 'exchanging' && <p className={styles.note} role="status">Google 계정 확인 완료. 로그인 중…</p>}
+      {status === 'ready' && (
+        <button
+          type="button"
+          className={styles.altLink}
+          disabled={disabled || isFallbackBusy}
+          onClick={async () => {
+            setIsFallbackBusy(true);
+            try {
+              await onFallback();
+            } finally {
+              setIsFallbackBusy(false);
+            }
+          }}
+        >
+          {isFallbackBusy ? 'Google로 이동 중…' : '버튼이 동작하지 않으면 리다이렉트 방식으로 로그인'}
+        </button>
+      )}
     </div>
   );
 }

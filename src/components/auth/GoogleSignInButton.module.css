@@ -10,4 +10,7 @@
 }
 .note { margin: 0; font-size: var(--text-xs); color: var(--color-ink-2); }
 .fallback { width: 100%; }
+.altLink { background: transparent; border: 0; padding: 0.25rem 0.5rem; font-size: var(--text-xs); color: var(--color-ink-3); text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
+.altLink:hover:not(:disabled) { color: var(--color-accent-strong); }
+.altLink:disabled { cursor: not-allowed; opacity: 0.6; }
 @keyframes shimmer { to { background-position: -200% 0; } }
