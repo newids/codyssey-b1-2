@@ -30,7 +30,7 @@ React 18 + React Router 6 + Supabase로 만든 **React 학습용 SPA**입니다.
 | --- |
 | ![로그인](images/screenshots/login.png) |
 
-> 배포 URL에서 캡쳐. 2026-09-23 (글래스모피즘 리디자인 반영).
+> 2026-09-23 글래스모피즘 리디자인 빌드 기준 캡쳐 (홈은 로컬 빌드, 나머지는 배포 URL).
 
 ## 실행 방법
 

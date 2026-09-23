@@ -2,17 +2,17 @@
 name: React Playground
 description: 느리게 흐르는 오로라 위에 떠 있는 서리 낀 OS 유리 — React 학습 SPA의 글래스모피즘 디자인 시스템
 colors:
-  ground: "oklch(96.5% 0.014 245)"
-  aurora-cyan: "oklch(84% 0.11 210)"
-  aurora-violet: "oklch(84% 0.10 300)"
-  aurora-mint: "oklch(88% 0.09 165)"
-  glass: "oklch(100% 0 0 / 0.55)"
-  glass-strong: "oklch(100% 0 0 / 0.72)"
-  glass-soft: "oklch(100% 0 0 / 0.35)"
-  glass-border: "oklch(100% 0 0 / 0.75)"
-  glass-border-edge: "oklch(60% 0.03 250 / 0.14)"
-  glass-highlight: "oklch(100% 0 0 / 0.85)"
-  plate: "oklch(100% 0 0 / 0.86)"
+  ground: "oklch(98.5% 0.008 245)"
+  aurora-cyan: "oklch(78% 0.15 212)"
+  aurora-violet: "oklch(76% 0.16 302)"
+  aurora-mint: "oklch(83% 0.14 162)"
+  glass: "oklch(100% 0 0 / 0.42)"
+  glass-strong: "oklch(100% 0 0 / 0.58)"
+  glass-soft: "oklch(100% 0 0 / 0.26)"
+  glass-border: "oklch(100% 0 0 / 0.9)"
+  glass-border-edge: "oklch(60% 0.03 250 / 0.18)"
+  glass-highlight: "oklch(100% 0 0 / 0.95)"
+  plate: "oklch(100% 0 0 / 0.84)"
   ink: "oklch(21% 0.03 260)"
   ink-2: "oklch(38% 0.03 260)"
   ink-3: "oklch(44% 0.03 260)"
@@ -210,6 +210,8 @@ components:
     rounded: "{rounded.md}"
     padding: "{spacing.4} {spacing.5}"
 ---
+
+> 2026-09-23 보정: 라이트 모드는 지면을 더 밝게(98.5%) 하되 오로라를 더 진하게, 유리는 더 투명하게(42/58/26%) + 135° 광택(`--glass-sheen`)을 더해 블러가 드러나게 했다. 다크 모드 지면 12%, 플레이트 17%/90%. 오로라는 필드마다 33/42/51초 주기, 이동 폭 14~18vmax.
 
 # Design System: React Playground
 

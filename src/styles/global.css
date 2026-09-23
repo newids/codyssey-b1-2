@@ -98,14 +98,14 @@ input, textarea { caret-color: var(--color-accent); }
 /* ── 유리 재질 ─────────────────────────────────────────────
    층 1: 배경 위에 떠 있는 표면. blur + 반투명 흰색 + 위쪽 1px 하이라이트 + 부드러운 오프셋 그림자. */
 .glass {
-  background: var(--glass-bg);
+  background: linear-gradient(135deg, var(--glass-sheen) 0%, var(--glass-bg) 45%, var(--glass-bg) 100%);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
   backdrop-filter: blur(var(--glass-blur)) saturate(150%);
   border: 1px solid var(--glass-border-edge);
   box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 0 0 1px var(--glass-border);
 }
 .glass-strong {
-  background: var(--glass-bg-strong);
+  background: linear-gradient(135deg, var(--glass-sheen) 0%, var(--glass-bg-strong) 50%, var(--glass-bg-strong) 100%);
   -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(160%);
   backdrop-filter: blur(var(--glass-blur-strong)) saturate(160%);
   border: 1px solid var(--glass-border-edge);
