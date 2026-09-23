@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23T00:00:00+09:00",
+  "title": "Design System: React Playground",
+  "extensions": {
+    "colorMeta": {
+      "ground": { "role": "neutral", "displayName": "차가운 바탕", "canonical": "oklch(96.5% 0.014 245)", "dark": "oklch(17% 0.03 262)", "tonalRamp": ["oklch(15% 0.014 245)", "oklch(27% 0.014 245)", "oklch(39% 0.014 245)", "oklch(51% 0.014 245)", "oklch(63% 0.014 245)", "oklch(75% 0.014 245)", "oklch(87% 0.014 245)", "oklch(96.5% 0.014 245)"] },
+      "aurora-cyan": { "role": "neutral", "displayName": "오로라 — React 하늘", "canonical": "oklch(84% 0.11 210)", "dark": "oklch(48% 0.13 215)", "tonalRamp": ["oklch(15% 0.11 210)", "oklch(27% 0.11 210)", "oklch(39% 0.11 210)", "oklch(51% 0.11 210)", "oklch(63% 0.11 210)", "oklch(75% 0.11 210)", "oklch(84% 0.11 210)", "oklch(95% 0.06 210)"] },
+      "aurora-violet": { "role": "neutral", "displayName": "오로라 — 보라", "canonical": "oklch(84% 0.10 300)", "dark": "oklch(42% 0.15 300)", "tonalRamp": ["oklch(15% 0.10 300)", "oklch(27% 0.10 300)", "oklch(39% 0.10 300)", "oklch(51% 0.10 300)", "oklch(63% 0.10 300)", "oklch(75% 0.10 300)", "oklch(84% 0.10 300)", "oklch(95% 0.05 300)"] },
+      "aurora-mint": { "role": "neutral", "displayName": "오로라 — 민트", "canonical": "oklch(88% 0.09 165)", "dark": "oklch(44% 0.11 165)", "tonalRamp": ["oklch(15% 0.09 165)", "oklch(27% 0.09 165)", "oklch(39% 0.09 165)", "oklch(51% 0.09 165)", "oklch(63% 0.09 165)", "oklch(75% 0.09 165)", "oklch(88% 0.09 165)", "oklch(95% 0.05 165)"] },
+      "glass": { "role": "neutral", "displayName": "유리 (55%)", "canonical": "oklch(100% 0 0 / 0.55)", "dark": "oklch(100% 0 0 / 0.09)" },
+      "glass-strong": { "role": "neutral", "displayName": "진한 유리 (72%)", "canonical": "oklch(100% 0 0 / 0.72)", "dark": "oklch(100% 0 0 / 0.11)" },
+      "glass-soft": { "role": "neutral", "displayName": "옅은 유리 (35%)", "canonical": "oklch(100% 0 0 / 0.35)", "dark": "oklch(100% 0 0 / 0.045)" },
+      "glass-border": { "role": "neutral", "displayName": "유리 안쪽 링", "canonical": "oklch(100% 0 0 / 0.75)", "dark": "oklch(100% 0 0 / 0.26)" },
+      "glass-border-edge": { "role": "neutral", "displayName": "유리 바깥 가장자리", "canonical": "oklch(60% 0.03 250 / 0.14)", "dark": "oklch(0% 0 0 / 0.35)" },
+      "glass-highlight": { "role": "neutral", "displayName": "유리 상단 하이라이트", "canonical": "oklch(100% 0 0 / 0.85)", "dark": "oklch(100% 0 0 / 0.34)" },
+      "plate": { "role": "neutral", "displayName": "읽기 플레이트 (86%)", "canonical": "oklch(100% 0 0 / 0.86)", "dark": "oklch(22% 0.03 262 / 0.88)" },
+      "ink": { "role": "neutral", "displayName": "잉크", "canonical": "oklch(21% 0.03 260)", "dark": "oklch(95% 0.012 90)", "tonalRamp": ["oklch(15% 0.03 260)", "oklch(21% 0.03 260)", "oklch(38% 0.03 260)", "oklch(44% 0.03 260)", "oklch(60% 0.03 260)", "oklch(75% 0.02 260)", "oklch(87% 0.015 260)", "oklch(95% 0.01 260)"] },
+      "ink-2": { "role": "neutral", "displayName": "잉크 2 (리드·설명)", "canonical": "oklch(38% 0.03 260)", "dark": "oklch(80% 0.015 90)" },
+      "ink-3": { "role": "neutral", "displayName": "잉크 3 (메타, AA 경계 L44%)", "canonical": "oklch(44% 0.03 260)", "dark": "oklch(66% 0.015 90)" },
+      "line": { "role": "neutral", "displayName": "선", "canonical": "oklch(70% 0.02 250 / 0.28)", "dark": "oklch(85% 0.02 250 / 0.14)" },
+      "line-strong": { "role": "neutral", "displayName": "진한 선", "canonical": "oklch(60% 0.03 250 / 0.42)", "dark": "oklch(85% 0.02 250 / 0.26)" },
+      "accent": { "role": "primary", "displayName": "React 하늘색", "canonical": "oklch(56% 0.13 220)", "dark": "oklch(78% 0.1 210)", "tonalRamp": ["oklch(15% 0.13 220)", "oklch(27% 0.13 220)", "oklch(44% 0.13 222)", "oklch(56% 0.13 220)", "oklch(66% 0.12 218)", "oklch(78% 0.1 210)", "oklch(88% 0.06 215)", "oklch(95% 0.03 215)"] },
+      "accent-strong": { "role": "primary", "displayName": "깊은 하늘색 (단색 채움)", "canonical": "oklch(44% 0.13 222)", "dark": "oklch(86% 0.08 210)" },
+      "accent-soft": { "role": "primary", "displayName": "하늘색 유리 (물든 면)", "canonical": "oklch(88% 0.06 215 / 0.7)", "dark": "oklch(40% 0.07 220 / 0.6)" },
+      "accent-ink": { "role": "primary", "displayName": "액센트 위 잉크", "canonical": "oklch(100% 0 0)", "dark": "oklch(16% 0.03 260)" },
+      "success": { "role": "semantic", "displayName": "성공 (마크·링)", "canonical": "oklch(50% 0.14 155)", "dark": "oklch(76% 0.13 155)", "tonalRamp": ["oklch(15% 0.14 155)", "oklch(27% 0.14 155)", "oklch(39% 0.14 155)", "oklch(50% 0.14 155)", "oklch(63% 0.14 155)", "oklch(76% 0.13 155)", "oklch(85% 0.1 155)", "oklch(95% 0.05 155)"] },
+      "success-soft": { "role": "semantic", "displayName": "성공 유리", "canonical": "oklch(90% 0.07 155 / 0.75)", "dark": "oklch(35% 0.08 155 / 0.6)" },
+      "danger": { "role": "semantic", "displayName": "위험 (마크·링)", "canonical": "oklch(52% 0.19 27)", "dark": "oklch(74% 0.16 27)", "tonalRamp": ["oklch(15% 0.19 27)", "oklch(27% 0.19 27)", "oklch(39% 0.19 27)", "oklch(52% 0.19 27)", "oklch(63% 0.18 27)", "oklch(74% 0.16 27)", "oklch(85% 0.1 27)", "oklch(95% 0.04 27)"] },
+      "danger-soft": { "role": "semantic", "displayName": "위험 유리", "canonical": "oklch(92% 0.05 27 / 0.8)", "dark": "oklch(34% 0.09 27 / 0.6)" },
+      "warn": { "role": "semantic", "displayName": "주의", "canonical": "oklch(60% 0.14 70)", "dark": "oklch(80% 0.13 80)" },
+      "warn-soft": { "role": "semantic", "displayName": "주의 유리", "canonical": "oklch(92% 0.07 85 / 0.8)", "dark": "oklch(36% 0.08 80 / 0.6)" },
+      "code-bg": { "role": "neutral", "displayName": "코드 남색 유리", "canonical": "oklch(24% 0.035 262 / 0.92)", "dark": "oklch(12% 0.025 262 / 0.85)" },
+      "code-ink": { "role": "neutral", "displayName": "코드 잉크", "canonical": "oklch(93% 0.02 90)", "dark": "oklch(93% 0.02 90)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "홈 히어로 두 줄 헤드라인 한 곳. 1200px 이상에서 4rem 고정." },
+      "headline": { "displayName": "Headline (h1)", "purpose": "페이지 제목, 레슨 제목, 패널 밖 섹션 제목." },
+      "title": { "displayName": "Title (h2)", "purpose": "패널 안 제목, 레슨 본문 소제목, 퀴즈 점수." },
+      "subtitle": { "displayName": "Subtitle (h3)", "purpose": "레슨 카드 제목, 상태 화면 제목; 리드 문단은 같은 크기에 400/ink-2." },
+      "body": { "displayName": "Body", "purpose": "기본 본문. 읽기 플레이트 안에서는 1.85 행간, 68ch." },
+      "label": { "displayName": "Label", "purpose": "버튼·내비·입력 레이블·메타 문장. 대문자 변환 없음." },
+      "caption": { "displayName": "Caption", "purpose": "배지, 분/번호 메타, 힌트, 오류 문구." },
+      "mono": { "displayName": "Mono", "purpose": "code · pre · kbd · 코드 조각 · 글자수 카운터에만." }
+    },
+    "shadows": [
+      { "name": "glass-shadow", "value": "0 14px 34px -14px oklch(35% 0.06 255 / 0.28), 0 2px 8px -2px oklch(35% 0.06 255 / 0.08)", "dark": "0 16px 40px -16px oklch(0% 0 0 / 0.6), 0 2px 8px -2px oklch(0% 0 0 / 0.35)", "purpose": "층 1·2 표면의 휴지 그림자." },
+      { "name": "glass-shadow-hover", "value": "0 22px 44px -16px oklch(35% 0.06 255 / 0.34), 0 4px 12px -4px oklch(35% 0.06 255 / 0.1)", "dark": "0 24px 50px -18px oklch(0% 0 0 / 0.7), 0 4px 12px -4px oklch(0% 0 0 / 0.4)", "purpose": "인터랙티브 카드 호버(-3px)와 토스트." },
+      { "name": "glass-highlight-inset", "value": "inset 0 1px 0 var(--glass-highlight)", "purpose": "유리 상단 1px 하이라이트. 모든 유리 표면·마크 원·활성 내비." },
+      { "name": "glass-border-inset", "value": "inset 0 0 0 1px var(--glass-border)", "purpose": "유리 안쪽 흰 링. .glass / .glass-strong에만 (플레이트는 없음)." },
+      { "name": "accent-shadow", "value": "0 8px 20px -10px var(--color-accent-strong)", "purpose": "primary 버튼과 켜진 데모 단계 — 액센트 채움만 자기 색 그림자를 갖는다." },
+      { "name": "state-ring", "value": "inset 0 0 0 1px <var(--color-line) | var(--color-accent) | var(--color-success) | var(--color-danger)>", "purpose": "경계·선택·정답·오답·오류 — 상태는 이 1px 링으로." },
+      { "name": "control-inset", "value": "inset 0 1px 2px oklch(0% 0 0 / 0.04)", "purpose": "입력·트랙·토글처럼 파인 컨트롤 (0.04–0.1)." },
+      { "name": "focus-ring", "value": "outline: 2px solid var(--color-accent); outline-offset: 3px", "purpose": "전역 :focus-visible. 입력은 대신 0 0 0 4px var(--color-accent-soft) 글로우." }
+    ],
+    "materials": [
+      { "name": "glass", "css": "background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)) saturate(150%); border: 1px solid var(--glass-border-edge); box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 0 0 1px var(--glass-border);", "purpose": "층 1 — 카드·패널·상태 화면." },
+      { "name": "glass-strong", "css": "background: var(--glass-bg-strong); backdrop-filter: blur(var(--glass-blur-strong)) saturate(160%); border: 1px solid var(--glass-border-edge); box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 0 0 1px var(--glass-border);", "purpose": "층 1 강조 — 헤더 바, 모바일 내비." },
+      { "name": "plate", "css": "background: var(--plate-bg); backdrop-filter: blur(var(--glass-blur-strong)); border: 1px solid var(--glass-border-edge); box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);", "purpose": "층 2 — 레슨 본문 읽기 플레이트, 68ch." },
+      { "name": "glass-on-glass", "css": "background: var(--glass-bg-soft); box-shadow: inset 0 0 0 1px var(--color-line);", "purpose": "유리 위의 행·컨트롤 — 데모 단계, 퀴즈 보기, 세그먼트 트랙." }
+    ],
+    "motion": [
+      { "name": "dur-fast", "value": "140ms", "purpose": "색·테두리·버튼 상승." },
+      { "name": "dur-base", "value": "260ms", "purpose": "카드 호버, 토스트·내비 진입, 단계 켜짐, count pop." },
+      { "name": "dur-slow", "value": "520ms", "purpose": "페이지 진입, 테마 전환, 진행 바." },
+      { "name": "dur-drift", "value": "60s", "purpose": "오로라 드리프트 — 유일한 무한 반복 시계. alternate, 필드별 -20s/-40s 지연." },
+      { "name": "ease-out", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "기본 ease-out." },
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "토스트·토글 노브·count pop. 튕김 없음." },
+      { "name": "pageEnter", "value": "from { opacity: 0; transform: translateY(14px); filter: blur(6px) } to { opacity: 1; transform: none; filter: blur(0) }", "purpose": "라우트마다 main에 1회, 520ms." },
+      { "name": "drift", "value": "0% translate3d(0,0,0) scale(1); 50% translate3d(6vmax,4vmax,0) scale(1.08); 100% translate3d(-4vmax,7vmax,0) scale(0.96)", "purpose": "오로라 필드. transform만, blur는 정적. reduced-motion에서 animation: none." },
+      { "name": "reduced-motion", "value": "animation-duration: 0.01ms; transition-duration: 0.01ms; .field { animation: none }", "purpose": "prefers-reduced-motion: 오로라 포함 전부 정지." }
+    ],
+    "breakpoints": [
+      { "name": "list-collapse", "value": "640px", "purpose": "목록 행 부제 열 제거, 플레이트 패딩 축소." },
+      { "name": "toolbar-stack", "value": "760px", "purpose": "툴바·교재 패널 1열." },
+      { "name": "mobile-nav", "value": "767px", "purpose": "헤더 22px 라운드, 내비 드롭 패널." },
+      { "name": "two-column", "value": "900px", "purpose": "히어로·레슨 상세 2열 → 1열, 사이드 sticky 해제." },
+      { "name": "hero-max", "value": "1200px", "purpose": "히어로 제목 4rem 고정." }
+    ],
+    "layout": {
+      "container": "min(100% - var(--gutter) * 2, 72rem)",
+      "measure": "68ch",
+      "headerSticky": "top: var(--space-3); z-index: 50",
+      "mainPadding": "var(--space-6) 0 var(--space-7)"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "단색 액센트 알약. 호버 1px 상승, 액센트색 그림자.",
+      "html": "<button class=\"ds-btn ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2V5ZM4 19a2 2 0 0 0 2 2h14M8 7h8\"/></svg><span>레슨 시작하기</span></button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2, .5rem); padding: .72rem 1.3rem; border: 1px solid transparent; border-radius: 999px; font-family: var(--font-body, 'Pretendard Variable', system-ui, sans-serif); font-size: var(--text-sm, .875rem); font-weight: 600; line-height: 1; cursor: pointer; transition: transform 140ms cubic-bezier(.22,1,.36,1), box-shadow 140ms, background-color 140ms, border-color 140ms, color 140ms; } .ds-btn:hover { transform: translateY(-1px); } .ds-btn:active { transform: translateY(0) scale(.98); } .ds-btn:focus-visible { outline: 2px solid var(--color-accent, oklch(56% .13 220)); outline-offset: 3px; } .ds-btn-primary { background: var(--color-accent-strong, oklch(44% .13 222)); color: var(--color-accent-ink, #fff); box-shadow: 0 8px 20px -10px var(--color-accent-strong, oklch(44% .13 222)), inset 0 1px 0 oklch(100% 0 0 / .25); } .ds-btn-primary:hover { box-shadow: 0 12px 26px -10px var(--color-accent-strong, oklch(44% .13 222)), inset 0 1px 0 oklch(100% 0 0 / .3); }"
+    },
+    {
+      "name": "Secondary (Glass) Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "유리 알약. 호버 시 테두리와 텍스트가 액센트로.",
+      "html": "<button class=\"ds-btn ds-btn-secondary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 3h9l5 5v13H6V3ZM14 3v6h6M9 13h6M9 17h6\"/></svg><span>학습 노트 둘러보기</span></button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .72rem 1.3rem; border: 1px solid transparent; border-radius: 999px; font-family: var(--font-body, 'Pretendard Variable', system-ui, sans-serif); font-size: var(--text-sm, .875rem); font-weight: 600; line-height: 1; cursor: pointer; transition: transform 140ms cubic-bezier(.22,1,.36,1), border-color 140ms, color 140ms; } .ds-btn:hover { transform: translateY(-1px); } .ds-btn:active { transform: translateY(0) scale(.98); } .ds-btn:focus-visible { outline: 2px solid var(--color-accent, oklch(56% .13 220)); outline-offset: 3px; } .ds-btn-secondary { background: var(--glass-bg-strong, oklch(100% 0 0 / .72)); color: var(--color-ink, oklch(21% .03 260)); border-color: var(--glass-border-edge, oklch(60% .03 250 / .14)); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: inset 0 1px 0 var(--glass-highlight, oklch(100% 0 0 / .85)), 0 2px 8px -4px oklch(0% 0 0 / .15); } .ds-btn-secondary:hover { border-color: var(--color-accent, oklch(56% .13 220)); color: var(--color-accent-strong, oklch(44% .13 222)); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "투명 알약. 호버 시 옅은 유리로.",
+      "html": "<button class=\"ds-btn ds-btn-ghost\">취소</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .72rem 1.3rem; border: 1px solid transparent; border-radius: 999px; font-family: var(--font-body, 'Pretendard Variable', system-ui, sans-serif); font-size: var(--text-sm, .875rem); font-weight: 600; line-height: 1; cursor: pointer; transition: transform 140ms cubic-bezier(.22,1,.36,1), background-color 140ms, color 140ms; } .ds-btn:hover { transform: translateY(-1px); } .ds-btn:focus-visible { outline: 2px solid var(--color-accent, oklch(56% .13 220)); outline-offset: 3px; } .ds-btn-ghost { background: transparent; color: var(--color-ink-2, oklch(38% .03 260)); } .ds-btn-ghost:hover { background: var(--glass-bg-soft, oklch(100% 0 0 / .35)); color: var(--color-ink, oklch(21% .03 260)); }"
+    },
+    {
+      "name": "Glass Card",
+      "kind": "card",
+      "refersTo": "card-glass",
+      "description": "층 1 유리 카드. 세 가장자리 + 유리 그림자. interactive는 호버에 3px 상승.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-order\">3</div><div><span class=\"ds-badge ds-badge-accent\">기본</span><h3 class=\"ds-card-title\">이벤트 → 상태 → 렌더링</h3><p class=\"ds-card-sub\">React가 화면을 바꾸는 유일한 경로</p></div></article>",
+      "css": ".ds-card { display: flex; gap: 1rem; padding: 1.5rem; border-radius: 22px; background: var(--glass-bg, oklch(100% 0 0 / .55)); backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); border: 1px solid var(--glass-border-edge, oklch(60% .03 250 / .14)); box-shadow: var(--glass-shadow, 0 14px 34px -14px oklch(35% .06 255 / .28), 0 2px 8px -2px oklch(35% .06 255 / .08)), inset 0 1px 0 var(--glass-highlight, oklch(100% 0 0 / .85)), inset 0 0 0 1px var(--glass-border, oklch(100% 0 0 / .75)); color: var(--color-ink, oklch(21% .03 260)); font-family: var(--font-body, 'Pretendard Variable', system-ui, sans-serif); transition: transform 260ms cubic-bezier(.22,1,.36,1), box-shadow 260ms cubic-bezier(.22,1,.36,1), background-color 260ms; } .ds-card:hover { transform: translateY(-3px); background: var(--glass-bg-strong, oklch(100% 0 0 / .72)); box-shadow: var(--glass-shadow-hover, 0 22px 44px -16px oklch(35% .06 255 / .34), 0 4px 12px -4px oklch(35% .06 255 / .1)), inset 0 1px 0 var(--glass-highlight, oklch(100% 0 0 / .85)), inset 0 0 0 1px var(--glass-border, oklch(100% 0 0 / .75)); } .ds-card:focus-within { outline: 2px solid var(--color-accent, oklch(56% .13 220)); outline-offset: 2px; } .ds-card-order { font-size: 1.5rem; line-height: 1; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; color: var(--color-ink-3, oklch(44% .03 260)); opacity: .7; } .ds-card-title { margin: .25rem 0 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.15; } .ds-card-sub { margin: 0; font-size: .875rem; font-weight: 500; color: var(--color-accent-strong, oklch(44% .13 222)); } .ds-badge { display: inline-flex; align-items: center; padding: .22em .7em; border-radius: 999px; font-size: .78rem; font-weight: 600; letter-spacing: .01em; line-height: 1.4; box-shadow: inset 0 0 0 1px oklch(100% 0 0 / .35); } .ds-badge-accent { background: var(--color-accent-soft, oklch(88% .06 215 / .7)); color: var(--color-accent-strong, oklch(44% .13 222)); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "옅은 유리 필드. 포커스 시 액센트 테두리 + 4px 액센트 유리 글로우.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-label\">제목 <span class=\"ds-req\">*</span></span><input class=\"ds-input\" placeholder=\"오늘 배운 것\" /><span class=\"ds-hint\">최대 100자</span></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: .25rem; font-family: var(--font-body, 'Pretendard Variable', system-ui, sans-serif); } .ds-label { font-size: .875rem; font-weight: 600; color: var(--color-ink-2, oklch(38% .03 260)); } .ds-req { color: var(--color-danger, oklch(52% .19 27)); } .ds-input { width: 100%; padding: .75rem .95rem; border: 1px solid var(--color-line-strong, oklch(60% .03 250 / .42)); border-radius: 14px; background: var(--glass-bg-soft, oklch(100% 0 0 / .35)); color: var(--color-ink, oklch(21% .03 260)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: inset 0 1px 2px oklch(0% 0 0 / .04); font: inherit; font-size: 1rem; transition: border-color 140ms, box-shadow 140ms, background-color 140ms; } .ds-input::placeholder { color: var(--color-ink-3, oklch(44% .03 260)); } .ds-input:focus { outline: none; border-color: var(--color-accent, oklch(56% .13 220)); background: var(--glass-bg-strong, oklch(100% 0 0 / .72)); box-shadow: 0 0 0 4px var(--color-accent-soft, oklch(88% .06 215 / .7)); } .ds-hint { font-size: .78rem; color: var(--color-ink-3, oklch(44% .03 260)); }"
+    },
+    {
+      "name": "Nav Segment",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "알약 트랙 위의 알약 링크. 활성은 '눌린 유리 키' — glass-strong + 하이라이트 + 얕은 그림자.",
+      "html": "<nav aria-label=\"주요\"><ul class=\"ds-seg\"><li><a class=\"ds-seg-link ds-seg-active\" href=\"#\" aria-current=\"page\">레슨</a></li><li><a class=\"ds-seg-link\" href=\"#\">학습 노트</a></li><li><a class=\"ds-seg-link\" href=\"#\">내 진도</a></li></ul></nav>",
+      "css": ".ds-seg { display: inline-flex; gap: 2px; list-style: none; margin: 0; padding: 3px; border-radius: 999px; background: var(--glass-bg-soft, oklch(100% 0 0 / .35)); box-shadow: inset 0 0 0 1px var(--color-line, oklch(70% .02 250 / .28)); font-family: var(--font-body, 'Pretendard Variable', system-ui, sans-serif); } .ds-seg-link { display: inline-block; padding: .45rem .9rem; border-radius: 999px; color: var(--color-ink-2, oklch(38% .03 260)); text-decoration: none; font-size: .875rem; font-weight: 600; transition: background-color 140ms, color 140ms, box-shadow 140ms; } .ds-seg-link:hover { color: var(--color-ink, oklch(21% .03 260)); background: var(--glass-bg-soft, oklch(100% 0 0 / .35)); } .ds-seg-link:focus-visible { outline: 2px solid var(--color-accent, oklch(56% .13 220)); outline-offset: 3px; } .ds-seg-active, .ds-seg-active:hover { background: var(--glass-bg-strong, oklch(100% 0 0 / .72)); color: var(--color-ink, oklch(21% .03 260)); box-shadow: 0 1px 2px oklch(0% 0 0 / .08), inset 0 1px 0 var(--glass-highlight, oklch(100% 0 0 / .85)); }"
+    },
+    {
+      "name": "Badge Set",
+      "kind": "chip",
+      "refersTo": "badge-accent",
+      "description": "레슨 난이도·완료 표시. soft 채움 + 진한 텍스트 + 흰 35% 링.",
+      "html": "<span class=\"ds-badge ds-badge-neutral\">전체</span> <span class=\"ds-badge ds-badge-success\">입문</span> <span class=\"ds-badge ds-badge-accent\">기본</span> <span class=\"ds-badge ds-badge-warn\">응용</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: .35em; padding: .22em .7em; border-radius: 999px; font-family: var(--font-body, 'Pretendard Variable', system-ui, sans-serif); font-size: .78rem; font-weight: 600; letter-spacing: .01em; line-height: 1.4; box-shadow: inset 0 0 0 1px oklch(100% 0 0 / .35); } .ds-badge-neutral { background: var(--glass-bg-strong, oklch(100% 0 0 / .72)); color: var(--color-ink-2, oklch(38% .03 260)); box-shadow: inset 0 0 0 1px var(--color-line, oklch(70% .02 250 / .28)); } .ds-badge-accent { background: var(--color-accent-soft, oklch(88% .06 215 / .7)); color: var(--color-accent-strong, oklch(44% .13 222)); } .ds-badge-success { background: var(--color-success-soft, oklch(90% .07 155 / .75)); color: var(--color-success, oklch(50% .14 155)); } .ds-badge-warn { background: var(--color-warn-soft, oklch(92% .07 85 / .8)); color: var(--color-warn, oklch(60% .14 70)); }"
+    },
+    {
+      "name": "Quiz Choice (state-as-mark)",
+      "kind": "custom",
+      "refersTo": "card-glass",
+      "description": "정답·오답은 원형 마크의 채움과 1px 링으로만. 행 배경은 채우지 않는다.",
+      "html": "<div class=\"ds-choices\"><label class=\"ds-choice ds-choice-correct\"><span class=\"ds-mark\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12.5 9.5 17 19 7.5\"/></svg></span><span>setState를 호출하면 React가 다시 그린다</span></label><label class=\"ds-choice ds-choice-wrong\"><span class=\"ds-mark\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM5.6 5.6l12.8 12.8\"/></svg></span><span>DOM을 직접 수정한다</span></label><label class=\"ds-choice\"><span class=\"ds-mark\">C</span><span>페이지를 새로고침한다</span></label></div>",
+      "css": ".ds-choices { display: grid; gap: .5rem; font-family: var(--font-body, 'Pretendard Variable', system-ui, sans-serif); } .ds-choice { display: flex; align-items: center; gap: .75rem; padding: .7rem .9rem; border: 1px solid var(--color-line, oklch(70% .02 250 / .28)); border-radius: 14px; background: var(--glass-bg-soft, oklch(100% 0 0 / .35)); color: var(--color-ink, oklch(21% .03 260)); cursor: pointer; font-size: .875rem; transition: border-color 140ms, transform 140ms cubic-bezier(.22,1,.36,1); } .ds-choice:hover { border-color: var(--color-accent, oklch(56% .13 220)); transform: translateX(2px); } .ds-mark { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; flex-shrink: 0; font-size: .78rem; font-weight: 700; background: var(--glass-bg-strong, oklch(100% 0 0 / .72)); color: var(--color-ink-2, oklch(38% .03 260)); box-shadow: inset 0 0 0 1px var(--color-line, oklch(70% .02 250 / .28)); } .ds-choice-correct { border-color: var(--color-success, oklch(50% .14 155)); box-shadow: inset 0 0 0 1px var(--color-success, oklch(50% .14 155)); } .ds-choice-correct .ds-mark { background: var(--color-success, oklch(50% .14 155)); color: #fff; box-shadow: none; } .ds-choice-wrong { border-color: var(--color-danger, oklch(52% .19 27)); box-shadow: inset 0 0 0 1px var(--color-danger, oklch(52% .19 27)); } .ds-choice-wrong .ds-mark { background: var(--color-danger, oklch(52% .19 27)); color: #fff; box-shadow: none; }"
+    },
+    {
+      "name": "Toast",
+      "kind": "custom",
+      "refersTo": "toast",
+      "description": "잉크 88% 반투명 알약 + blur 14px. 하단 중앙에서 16px 상승 진입.",
+      "html": "<div class=\"ds-toast\"><span>노트가 저장되었습니다</span><button class=\"ds-toast-close\" aria-label=\"닫기\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M6 6l12 12M18 6 6 18\"/></svg></button></div>",
+      "css": ".ds-toast { display: inline-flex; align-items: center; gap: .75rem; padding: .7rem .7rem .7rem 1.2rem; border-radius: 999px; background: color-mix(in oklch, var(--color-ink, oklch(21% .03 260)) 88%, transparent); color: var(--color-ground, oklch(96.5% .014 245)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); font-family: var(--font-body, 'Pretendard Variable', system-ui, sans-serif); font-size: .875rem; font-weight: 500; box-shadow: var(--glass-shadow-hover, 0 22px 44px -16px oklch(35% .06 255 / .34), 0 4px 12px -4px oklch(35% .06 255 / .1)), inset 0 1px 0 oklch(100% 0 0 / .18); animation: ds-toast-in 260ms cubic-bezier(.16,1,.3,1); } .ds-toast-close { display: grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: oklch(100% 0 0 / .12); border: 0; color: inherit; cursor: pointer; opacity: .85; } .ds-toast-close:hover { opacity: 1; background: oklch(100% 0 0 / .2); } @keyframes ds-toast-in { from { opacity: 0; transform: translateY(16px) scale(.96); } to { opacity: 1; transform: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "오로라 위의 서리 유리 (Frosted Glass over a Slow Aurora)",
+    "overview": "React Playground는 학습자의 데스크톱 OS가 이미 쓰고 있는 재질 — 서리 낀 반투명 유리 — 로 만들어진 학습 사이트다. 크림색 종이 교과서도, 네온이 번지는 다크 해커 화면도 아니다. 화면은 네 개의 층으로 쌓인다. 층 0은 차가운 바탕(--color-ground) 위에서 React 하늘색·보라·민트 세 개의 오로라 필드가 60초 주기 한 개의 시계로 아주 느리게 흐른다. 층 1은 그 위에 떠 있는 유리 표면(.glass, .glass-strong) — 헤더·카드·패널이 여기에 산다. 층 2는 레슨 본문을 위한 86% 불투명 읽기 플레이트(.plate)로, 긴 글의 대비가 유리 효과보다 먼저다. 층 3은 잉크다.\n\n밀도는 여유롭다. 표면은 넉넉한 라운드(22–30px)와 안쪽 1px 하이라이트, 부드러운 오프셋 그림자로 \"떠 있음\"을 말하고, 위계는 색이 아니라 높이(elevation)로 표현된다. 상태(맞음·틀림·오류·완료)는 원형 마크와 1px 링으로 그려지며, 행이나 카드를 색으로 채우지 않는다. 움직임은 배경만 흐르고 앞면은 정지해 있다 — 표면은 입력(호버·진입)에만 반응하고, 그마저 1–3px의 상승과 한 번의 페이지 진입으로 끝난다. prefers-reduced-motion이면 오로라를 포함해 모두 멈춘다.\n\n확인된 시각적 거부: 크림 종이 텍스처, 네온 글로우, 호버 틸트·빛 반사, 헤딩 위 아이브로/키커, 이모지·유니코드 기호 아이콘, 코드 외 영역의 모노스페이스.",
+    "keyCharacteristics": [
+      "4개 층(오로라 → 유리 → 플레이트 → 잉크)의 고정된 재질 순서",
+      "오로라 3필드가 공유하는 하나의 60초 드리프트 시계, 앞면은 정지",
+      "유리 = blur 18/26px + 흰색 55/72% (다크 9/11%) + 안쪽 1px 하이라이트 + 오프셋 그림자",
+      "Pretendard 800, -0.03em 디스플레이; 숫자는 항상 tabular-nums; JetBrains Mono는 코드에만",
+      "상태는 마크(check · slash · alert)와 1px 링으로, 색 채우기 없이",
+      "액션·내비·배지·토스트는 pill, 표면은 22–30px 라운드",
+      "라이트/다크 모두 한 토큰 세트로, 다크에서 유리 가장자리 대비 강화"
+    ],
+    "rules": [
+      { "name": "The Mark-Not-Flood Rule", "body": "상태는 원형 마크(check · slash · alert)의 채움과 1px 링(inset 0 0 0 1px)으로만 말한다. 정답·오답·오류·완료 어느 경우에도 행이나 카드 배경을 의미색으로 채우지 않는다. 배경이 바뀌는 곳은 마크 원 하나뿐이다.", "section": "colors" },
+      { "name": "The One Solid Accent Rule", "body": "accent-strong 단색 채움은 액션(primary 버튼)과 살아 있는 값(count 칩, 선택된 보기 마크, 켜진 단계 번호)에만 쓴다. 표면·배경·헤딩 블록을 액센트로 채우지 않는다. 넓은 면적은 accent-soft(물든 유리)다.", "section": "colors" },
+      { "name": "The Aurora-Stays-Behind Rule", "body": "--aurora-1/2/3는 층 0의 필드에만 쓴다. 버튼·배지·그라디언트 텍스트 등 UI 요소로 오로라 색을 끌어올리지 않는다.", "section": "colors" },
+      { "name": "The Mono-Is-Code Rule", "body": "JetBrains Mono는 code, pre, kbd, 코드 조각, 글자수 카운터에만 쓴다. 라벨·메타·아이브로·번호에 모노를 쓰지 않는다.", "section": "typography" },
+      { "name": "The Tabular Count Rule", "body": "화면에 보이는 모든 숫자(레슨 번호, 분, 진도 %, 퀴즈 점수, 노트 개수, count)는 font-variant-numeric: tabular-nums다. 숫자가 바뀌어도 폭이 흔들리지 않는다.", "section": "typography" },
+      { "name": "The 68ch Plate Rule", "body": "레슨 본문은 .plate 안에서 max-width: var(--measure)(68ch)와 행간 1.85로 읽힌다. 플레이트 폭이 넓어져도 글은 넓어지지 않는다.", "section": "typography" },
+      { "name": "The No-Eyebrow Rule", "body": "헤딩 위에 소문자·대문자 키커나 아이브로 라벨을 두지 않는다. 헤딩은 800 웨이트 자체가 위계다.", "section": "typography" },
+      { "name": "The Rank-Is-Elevation Rule", "body": "무엇이 더 중요한지는 불투명도와 그림자로 말한다(soft < glass < strong < plate). 색을 바꿔서 중요도를 표시하지 않는다.", "section": "elevation" },
+      { "name": "The Front-Plane-Still Rule", "body": "무한 반복 애니메이션은 층 0의 오로라(drift, 60s, alternate, transform만) 하나뿐이다. 유리 표면은 입력에만 반응한다 — 호버 1–3px 상승, 페이지 진입 1회, 토스트 진입 1회. 스피너와 스켈레톤 시머는 로딩 중에만 존재한다. prefers-reduced-motion이면 오로라를 포함해 전부 정지한다.", "section": "elevation" },
+      { "name": "The Glass-Is-Not-Fog Rule", "body": "유리는 항상 세 가장자리(edge · border · highlight)를 갖는다. 블러와 반투명만 있고 가장자리가 없는 표면은 안개이지 유리가 아니다. 다크 모드에서는 edge를 검정 35%로, highlight를 흰 34%로 올려 가장자리가 사라지지 않게 한다.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do 새 표면은 .glass / .glass-strong / .plate 셋 중 하나를 붙이고, 세 가장자리(edge · border · highlight)와 --glass-shadow를 그대로 가져간다.",
+      "Do 긴 본문은 .plate 안에 max-width: var(--measure)(68ch), 행간 1.85로 놓는다.",
+      "Do 상태는 원형 마크(check · slash · alert) + inset 0 0 0 1px <의미색> 링으로 그린다.",
+      "Do 모든 숫자에 font-variant-numeric: tabular-nums를 준다.",
+      "Do 액션·내비·배지·토스트는 --radius-pill, 카드는 --radius-lg, 페이지 패널은 --radius-xl, 표면 안 행·입력은 --radius-md.",
+      "Do 전환은 --dur-fast(140ms) / --dur-base(260ms) / --dur-slow(520ms)와 --ease-out / --ease-out-expo만 쓰고, transform·opacity·filter만 애니메이션한다.",
+      "Do 호버는 표면을 1px(버튼) 또는 3px(카드) 들어 올리고 그림자를 --glass-shadow-hover로 키운다.",
+      "Do 아이콘은 Icon.tsx의 2px 스트로크 체계에 추가한다.",
+      "Do 다크 모드 값은 tokens.css의 [data-theme='dark']와 prefers-color-scheme 두 블록에 동일하게 넣는다."
+    ],
+    "donts": [
+      "Don't 행·카드·패널 배경을 success/danger/warn 단색이나 soft로 채워 상태를 표시하지 않는다 — 마크와 링뿐이다.",
+      "Don't --aurora-1/2/3를 UI 요소에 쓰지 않는다. 오로라는 층 0에만 산다.",
+      "Don't 오로라 외에 무한 반복 애니메이션을 두지 않는다. 호버 틸트, 빛 반사, 글로우 펄스는 이 세계의 것이 아니다.",
+      "Don't 헤딩 위에 아이브로/키커 라벨, 대문자 자간 확장 라벨을 두지 않는다.",
+      "Don't 코드가 아닌 텍스트에 JetBrains Mono를 쓰지 않는다.",
+      "Don't 가장자리(edge · border · highlight) 없는 블러 표면을 만들지 않는다.",
+      "Don't 이모지·유니코드 기호를 아이콘으로 쓰지 않는다.",
+      "Don't 유리 위에 유리 표면을 겹쳐 쌓지 않는다. 표면 안의 강조는 glass-soft 행 + line 링 한 겹까지다.",
+      "Don't --color-ink-3보다 밝은 잉크로 유리 위 본문을 쓰지 않는다 (AA 4.5:1 경계)."
+    ]
+  }
+}

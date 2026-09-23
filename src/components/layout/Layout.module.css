@@ -1,2 +1,20 @@
-.shell { display: flex; flex-direction: column; min-height: 100dvh; }
+.shell { position: relative; display: flex; flex-direction: column; min-height: 100dvh; isolation: isolate; }
 .main { flex: 1; padding-block: var(--space-6) var(--space-7); }
+
+/* 층 0 — 오로라. 고정 배경, transform 만 애니메이션 (컴포지터), blur 는 정적 */
+.aurora { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.field {
+  position: absolute; border-radius: 50%; filter: blur(var(--aurora-blur)); opacity: var(--aurora-opacity);
+  will-change: transform; animation: drift var(--dur-drift) ease-in-out infinite alternate;
+  transition: opacity var(--dur-slow), background-color var(--dur-slow);
+}
+.field1 { width: 62vmax; height: 62vmax; left: -18vmax; top: -22vmax; background: var(--aurora-1); }
+.field2 { width: 56vmax; height: 56vmax; right: -20vmax; top: 6vmax; background: var(--aurora-2); animation-delay: -20s; }
+.field3 { width: 52vmax; height: 52vmax; left: 22vmax; bottom: -30vmax; background: var(--aurora-3); animation-delay: -40s; }
+
+@keyframes drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(6vmax, 4vmax, 0) scale(1.08); }
+  100% { transform: translate3d(-4vmax, 7vmax, 0) scale(0.96); }
+}
+@media (prefers-reduced-motion: reduce) { .field { animation: none; } }

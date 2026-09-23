@@ -1,17 +1,14 @@
-.viewport {
-  position: fixed; inset-block-end: var(--space-5); inset-inline: 0;
-  display: flex; flex-direction: column; align-items: center; gap: var(--space-2);
-  padding-inline: var(--gutter); pointer-events: none; z-index: 100;
-}
+.viewport { position: fixed; inset-block-end: var(--space-5); inset-inline: 0; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding-inline: var(--gutter); pointer-events: none; z-index: 100; }
 .toast {
   display: flex; align-items: center; gap: var(--space-3);
-  padding: 0.75rem 1rem 0.75rem 1.25rem; border-radius: var(--radius-pill);
-  background: var(--color-ink); color: var(--color-paper); font-size: var(--text-sm); font-weight: 500;
-  box-shadow: var(--shadow-lg); pointer-events: auto;
-  animation: toastIn var(--dur-base) var(--ease-spring);
+  padding: 0.7rem 0.7rem 0.7rem 1.2rem; border-radius: var(--radius-pill);
+  background: color-mix(in oklch, var(--color-ink) 88%, transparent); color: var(--color-ground);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  font-size: var(--text-sm); font-weight: 500; box-shadow: var(--glass-shadow-hover), inset 0 1px 0 oklch(100% 0 0 / 0.18); pointer-events: auto;
+  animation: toastIn var(--dur-base) var(--ease-out-expo);
 }
-.success { background: var(--color-success); color: white; }
-.error { background: var(--color-danger); color: white; }
-.close { background: transparent; border: 0; color: inherit; font-size: 1.2rem; line-height: 1; cursor: pointer; opacity: 0.8; }
-.close:hover { opacity: 1; }
+.success { background: color-mix(in oklch, var(--color-success) 88%, transparent); color: white; }
+.error { background: color-mix(in oklch, var(--color-danger) 88%, transparent); color: white; }
+.close { display: grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: oklch(100% 0 0 / 0.12); border: 0; color: inherit; cursor: pointer; opacity: 0.85; }
+.close:hover { opacity: 1; background: oklch(100% 0 0 / 0.2); }
 @keyframes toastIn { from { opacity: 0; transform: translateY(16px) scale(0.96); } to { opacity: 1; transform: none; } }

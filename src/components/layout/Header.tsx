@@ -7,6 +7,7 @@ import { toUserMessage } from '@/lib/errors';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Button } from '@/components/ui/Button';
 import { Avatar } from '@/components/ui/Avatar';
+import { Icon } from '@/components/ui/Icon';
 import styles from './Header.module.css';
 
 const NAV_ITEMS = [
@@ -38,9 +39,16 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={['container', styles.inner].join(' ')}>
+      <div className={['container', styles.bar, 'glass-strong'].join(' ')}>
         <Link to="/" className={styles.brand} onClick={() => setIsMenuOpen(false)}>
-          <span className={styles.logo} aria-hidden="true" />
+          <svg className={styles.logo} viewBox="0 0 64 64" aria-hidden="true">
+            <g fill="none" stroke="currentColor" strokeWidth="4">
+              <ellipse cx="32" cy="32" rx="24" ry="9" />
+              <ellipse cx="32" cy="32" rx="24" ry="9" transform="rotate(60 32 32)" />
+              <ellipse cx="32" cy="32" rx="24" ry="9" transform="rotate(120 32 32)" />
+            </g>
+            <circle cx="32" cy="32" r="5" fill="currentColor" />
+          </svg>
           <span className={styles.brandText}>React <em>Playground</em></span>
         </Link>
 
@@ -49,10 +57,10 @@ export function Header() {
           className={styles.menuButton}
           aria-expanded={isMenuOpen}
           aria-controls="primary-nav"
-          aria-label="메뉴"
+          aria-label={isMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
           onClick={() => setIsMenuOpen((v) => !v)}
         >
-          <span className={[styles.bar, isMenuOpen ? styles.barOpen : ''].join(' ')} />
+          <Icon name={isMenuOpen ? 'close' : 'menu'} size={22} />
         </button>
 
         <nav id="primary-nav" className={[styles.nav, isMenuOpen ? styles.navOpen : ''].join(' ')} aria-label="주요 메뉴">

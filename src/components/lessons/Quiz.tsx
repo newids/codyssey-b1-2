@@ -3,6 +3,7 @@ import type { QuizQuestion } from '@/data/lessons';
 import { isQuizComplete, scoreQuiz, type QuizAnswers } from '@/lib/quiz';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { Icon } from '@/components/ui/Icon';
 import styles from './Quiz.module.css';
 
 export interface QuizProps {
@@ -85,7 +86,9 @@ export function Quiz({ questions, onSubmit, isLoggedIn }: QuizProps) {
                           onChange={() => select(q.id, ci)}
                           className="visually-hidden"
                         />
-                        <span className={styles.choiceMark} aria-hidden="true">{String.fromCharCode(65 + ci)}</span>
+                        <span className={styles.choiceMark} aria-hidden="true">
+                          {isGraded && isCorrect ? <Icon name="check" size={13} /> : isGraded && isChosen ? <Icon name="close" size={13} /> : String.fromCharCode(65 + ci)}
+                        </span>
                         <span>{choice}</span>
                       </label>
                     );

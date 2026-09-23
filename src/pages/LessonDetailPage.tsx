@@ -10,6 +10,7 @@ import { LessonContent } from '@/components/lessons/LessonContent';
 import { Quiz } from '@/components/lessons/Quiz';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { Icon } from '@/components/ui/Icon';
 import { AsyncBoundary } from '@/components/ui/AsyncBoundary';
 import { NoteGrid } from '@/components/notes/NoteGrid';
 import { NotFoundPage } from './NotFoundPage';
@@ -34,7 +35,7 @@ export function LessonDetailPage() {
   const handleToggle = async () => {
     try {
       await progress.toggle(lesson.slug);
-      showToast(isCompleted ? '완료 표시를 해제했습니다.' : `레슨 ${lesson.order} 완료! 🎉`, 'success');
+      showToast(isCompleted ? '완료 표시를 해제했습니다.' : `레슨 ${lesson.order} 완료`, 'success');
     } catch (err) {
       showToast(toUserMessage(err), 'error');
     }
@@ -43,20 +44,22 @@ export function LessonDetailPage() {
   return (
     <article className={styles.article}>
       <header className={styles.header}>
+        <h1 className={styles.title}>{lesson.title}</h1>
+        <p className={styles.subtitle}>{lesson.subtitle}</p>
         <div className={styles.meta}>
           <Badge tone="accent">레슨 {lesson.order}</Badge>
           <Badge>{lesson.level}</Badge>
           <span className={styles.minutes}>약 {lesson.minutes}분</span>
-          {isCompleted && <Badge tone="success">✓ 완료</Badge>}
+          {isCompleted && <Badge tone="success"><Icon name="check" size={12} /> 완료</Badge>}
           {best && <Badge>최고 점수 {best.score}/{best.total}</Badge>}
         </div>
-        <h1 className={styles.title}>{lesson.title}</h1>
-        <p className={styles.subtitle}>{lesson.subtitle}</p>
       </header>
 
       <div className={styles.grid}>
         <div>
-          <LessonContent blocks={lesson.blocks} />
+          <div className={['plate', styles.plate].join(' ')}>
+            <LessonContent blocks={lesson.blocks} />
+          </div>
 
           <section className={styles.usedIn} aria-labelledby="used-in">
             <h2 id="used-in" className={styles.usedInTitle}>이 사이트에서 쓰인 곳</h2>
@@ -80,7 +83,7 @@ export function LessonDetailPage() {
         </div>
 
         <aside className={styles.side}>
-          <div className={styles.sideCard}>
+          <div className={['glass', styles.sideCard].join(' ')}>
             <h3 className={styles.sideTitle}>진도</h3>
             {user ? (
               <Button
@@ -97,7 +100,7 @@ export function LessonDetailPage() {
               </p>
             )}
           </div>
-          <div className={styles.sideCard}>
+          <div className={['glass', styles.sideCard].join(' ')}>
             <h3 className={styles.sideTitle}>노트 남기기</h3>
             <p className={styles.sideText}>배운 내용을 내 말로 정리하면 오래 남습니다.</p>
             <Link to="/notes/new" state={{ lessonSlug: lesson.slug }} className={styles.sideLink}>
@@ -105,8 +108,8 @@ export function LessonDetailPage() {
             </Link>
           </div>
           <nav className={styles.pager} aria-label="레슨 이동">
-            {prev ? <Link to={`/lessons/${prev.slug}`}>← {prev.title}</Link> : <span />}
-            {next ? <Link to={`/lessons/${next.slug}`}>{next.title} →</Link> : <Link to="/lessons">목록으로</Link>}
+            {prev ? <Link to={`/lessons/${prev.slug}`}><Icon name="arrow-left" size={14} /> {prev.title}</Link> : <span />}
+            {next ? <Link to={`/lessons/${next.slug}`}>{next.title} <Icon name="arrow-right" size={14} /></Link> : <Link to="/lessons">목록으로</Link>}
           </nav>
         </aside>
       </div>

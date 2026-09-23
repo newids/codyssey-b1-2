@@ -42,7 +42,7 @@ export function NoteDetailPage() {
   return (
     <AsyncBoundary status={status} error={error} isEmpty={!note} onRetry={refetch} empty={{ title: '노트를 찾을 수 없습니다' }}>
       {note && (
-        <article className={styles.article}>
+        <article className={['plate', styles.article].join(' ')}>
           <nav className={styles.breadcrumb} aria-label="경로">
             <Link to="/notes">학습 노트</Link> <span aria-hidden="true">/</span> <span>{note.title}</span>
           </nav>

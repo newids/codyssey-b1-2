@@ -1,4 +1,5 @@
 import { useTheme } from '@/context/ThemeContext';
+import { Icon } from './Icon';
 import styles from './ThemeToggle.module.css';
 
 /** 클릭 → ThemeContext state 변경 → 전체 앱 색상 리렌더링 */
@@ -14,7 +15,7 @@ export function ThemeToggle() {
       aria-pressed={isDark}
       title={isDark ? '라이트 모드' : '다크 모드'}
     >
-      <span className={styles.knob} aria-hidden="true">{isDark ? '☾' : '☀'}</span>
+      <span className={styles.knob} aria-hidden="true"><Icon name={isDark ? 'moon' : 'sun'} size={13} /></span>
     </button>
   );
 }

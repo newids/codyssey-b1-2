@@ -14,23 +14,21 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--color-paper);
+  background: var(--color-ground);
   color: var(--color-ink);
   font-family: var(--font-body);
   font-size: var(--text-md);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   transition: background-color var(--dur-slow) var(--ease-out), color var(--dur-slow) var(--ease-out);
-  /* 종이 질감: 아주 옅은 도트 패턴 */
-  background-image: radial-gradient(oklch(50% 0.02 85 / 0.08) 1px, transparent 1px);
-  background-size: 22px 22px;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-weight: var(--display-weight);
+  line-height: 1.15;
+  letter-spacing: var(--display-tracking);
   margin: 0 0 var(--space-3);
   text-wrap: balance;
   word-break: keep-all;
@@ -39,15 +37,19 @@ h1, h2, h3, h4 {
 
 h1 { font-size: var(--text-2xl); }
 h2 { font-size: var(--text-xl); }
-h3 { font-size: var(--text-lg); }
+h3 { font-size: var(--text-lg); font-weight: 700; letter-spacing: -0.015em; }
 
+p, li { word-break: keep-all; overflow-wrap: anywhere; }
 p { margin: 0 0 var(--space-4); }
 
 a {
   color: var(--color-accent-strong);
   text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in oklch, currentColor 45%, transparent);
+  transition: text-decoration-color var(--dur-fast);
 }
+a:hover { text-decoration-color: currentColor; }
 
 code, pre, kbd {
   font-family: var(--font-mono);
@@ -64,6 +66,14 @@ button, input, textarea, select {
   font: inherit;
   color: inherit;
 }
+
+/* 브라우저 표면도 같은 팔레트로 */
+::selection { background: var(--color-accent-soft); color: var(--color-ink); }
+input, textarea { caret-color: var(--color-accent); }
+* { scrollbar-width: thin; scrollbar-color: var(--color-line-strong) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: var(--color-line-strong); border-radius: 10px; border: 3px solid transparent; background-clip: content-box; }
+*::-webkit-scrollbar-track { background: transparent; }
 
 :focus-visible {
   outline: 2px solid var(--color-accent);
@@ -85,14 +95,39 @@ button, input, textarea, select {
   white-space: nowrap;
 }
 
-/* 페이지 진입 애니메이션 — "스르륵" */
+/* ── 유리 재질 ─────────────────────────────────────────────
+   층 1: 배경 위에 떠 있는 표면. blur + 반투명 흰색 + 위쪽 1px 하이라이트 + 부드러운 오프셋 그림자. */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  border: 1px solid var(--glass-border-edge);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 0 0 1px var(--glass-border);
+}
+.glass-strong {
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(160%);
+  backdrop-filter: blur(var(--glass-blur-strong)) saturate(160%);
+  border: 1px solid var(--glass-border-edge);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 0 0 1px var(--glass-border);
+}
+/* 층 2: 긴 본문용 플레이트 — 대비 우선, blur는 유지 */
+.plate {
+  background: var(--plate-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  backdrop-filter: blur(var(--glass-blur-strong));
+  border: 1px solid var(--glass-border-edge);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+}
+
+/* 페이지 진입 — "스르륵": 살짝 아래에서 떠오르며 흐림이 걷힌다 (한 번, 한 곳) */
 .page-enter {
   animation: pageEnter var(--dur-slow) var(--ease-out) both;
 }
 
 @keyframes pageEnter {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(14px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {

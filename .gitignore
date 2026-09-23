@@ -11,3 +11,5 @@ coverage
 supabase/.temp
 supabase/.branches
 .playwright-mcp
+.impeccable/review/
+.impeccable/mocks/

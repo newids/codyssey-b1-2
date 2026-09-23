@@ -2,17 +2,16 @@ import type { ReactNode } from 'react';
 import styles from './PageHeader.module.css';
 
 export interface PageHeaderProps {
-  eyebrow?: string;
   title: string;
   description?: string;
   actions?: ReactNode;
 }
 
-export function PageHeader({ eyebrow, title, description, actions }: PageHeaderProps) {
+/** 제목이 스스로 무게를 가진다 — 위에 작은 라벨을 두지 않는다 */
+export function PageHeader({ title, description, actions }: PageHeaderProps) {
   return (
     <div className={styles.header}>
       <div>
-        {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
         <h1 className={styles.title}>{title}</h1>
         {description && <p className={styles.description}>{description}</p>}
       </div>

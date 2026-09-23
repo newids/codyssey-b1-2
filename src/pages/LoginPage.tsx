@@ -75,7 +75,6 @@ export function LoginPage() {
   return (
     <div className={styles.wrap}>
       <Card padding="lg" className={styles.card}>
-        <p className={styles.eyebrow}>로그인</p>
         <h1 className={styles.title}>진도와 점수를 기록하려면<br />로그인하세요</h1>
         <p className={styles.lead}>학습 노트 작성·수정·삭제, 레슨 완료 표시, 퀴즈 점수 기록에 로그인이 필요합니다.</p>
 

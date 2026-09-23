@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import type { Lesson } from '@/data/lessons';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { Icon } from '@/components/ui/Icon';
 import styles from './LessonCard.module.css';
 
 export interface LessonCardProps {
@@ -21,7 +22,7 @@ export const LessonCard = memo(function LessonCard({ lesson, isCompleted, bestSc
         <div className={styles.meta}>
           <Badge tone={LEVEL_TONE[lesson.level]}>{lesson.level}</Badge>
           <span className={styles.minutes}>{lesson.minutes}분</span>
-          {isCompleted && <Badge tone="success">✓ 완료</Badge>}
+          {isCompleted && <Badge tone="success"><Icon name="check" size={12} /> 완료</Badge>}
           {bestScore && <Badge>퀴즈 {bestScore.score}/{bestScore.total}</Badge>}
         </div>
         <h3 className={styles.title}>

@@ -24,7 +24,7 @@ export function NoteNewPage() {
 
   return (
     <>
-      <PageHeader eyebrow="New note" title="새 학습 노트" description="필수 항목(제목·내용)이 비어 있으면 저장할 수 없습니다." />
+      <PageHeader title="새 학습 노트" description="필수 항목(제목·내용)이 비어 있으면 저장할 수 없습니다." />
       <NoteForm
         initialValues={{ ...EMPTY_NOTE, lesson_slug: presetLesson }}
         submitLabel="저장"

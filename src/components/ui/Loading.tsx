@@ -12,7 +12,7 @@ export function Loading({ label = '불러오는 중…', variant = 'spinner', co
     return (
       <div className={styles.skeletonGrid} role="status" aria-live="polite" aria-label={label}>
         {Array.from({ length: count }, (_, i) => (
-          <div key={i} className={styles.skeletonCard} aria-hidden="true">
+          <div key={i} className={['glass', styles.skeletonCard].join(' ')} aria-hidden="true">
             <span className={styles.skeletonLine} style={{ width: '40%' }} />
             <span className={styles.skeletonLine} style={{ width: '85%' }} />
             <span className={styles.skeletonLine} style={{ width: '70%' }} />
@@ -22,7 +22,7 @@ export function Loading({ label = '불러오는 중…', variant = 'spinner', co
     );
   }
   return (
-    <div className={styles.state} role="status" aria-live="polite">
+    <div className={['glass', styles.state].join(' ')} role="status" aria-live="polite">
       <span className={styles.spinner} aria-hidden="true" />
       <p className={styles.stateText}>{label}</p>
     </div>

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Icon } from './Icon';
 import styles from './States.module.css';
 
 export interface EmptyStateProps {
@@ -10,8 +11,8 @@ export interface EmptyStateProps {
 
 export function EmptyState({ title = '표시할 데이터가 없습니다', description, action }: EmptyStateProps) {
   return (
-    <div className={[styles.state, styles.empty].join(' ')}>
-      <span className={styles.icon} aria-hidden="true">∅</span>
+    <div className={['glass', styles.state].join(' ')}>
+      <span className={styles.icon}><Icon name="slash" size={22} /></span>
       <h3 className={styles.stateTitle}>{title}</h3>
       {description && <p className={styles.stateText}>{description}</p>}
       {action}

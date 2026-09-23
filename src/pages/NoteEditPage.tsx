@@ -26,7 +26,7 @@ export function NoteEditPage() {
 
   return (
     <>
-      <PageHeader eyebrow="Edit note" title="학습 노트 수정" />
+      <PageHeader title="학습 노트 수정" />
       <AsyncBoundary status={status} error={error} isEmpty={!note} onRetry={refetch} empty={{ title: '노트를 찾을 수 없습니다' }}>
         {note && user && note.user_id !== user.id ? (
           <ErrorState title="권한이 없습니다" message="본인이 작성한 노트만 수정할 수 있습니다." />

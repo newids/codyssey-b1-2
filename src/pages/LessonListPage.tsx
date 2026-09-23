@@ -24,7 +24,6 @@ export function LessonListPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Lessons"
         title="8개 레슨으로 배우는 React"
         description="컴포넌트에서 커스텀 훅까지, 미션의 과제 목표 5개를 순서대로 다룹니다. 각 레슨 끝의 연습 문제로 확인하세요."
       />

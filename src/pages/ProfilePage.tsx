@@ -12,6 +12,7 @@ import { ProgressBar } from '@/components/ui/ProgressBar';
 import { AsyncBoundary } from '@/components/ui/AsyncBoundary';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { Icon } from '@/components/ui/Icon';
 import { NoteGrid } from '@/components/notes/NoteGrid';
 import styles from './ProfilePage.module.css';
 
@@ -26,7 +27,7 @@ export function ProfilePage() {
 
   return (
     <>
-      <PageHeader eyebrow="Profile" title="내 진도" description="레슨 완료 현황, 퀴즈 최고 점수, 내가 쓴 노트를 한 곳에서 봅니다." />
+      <PageHeader title="내 진도" description="레슨 완료 현황, 퀴즈 최고 점수, 내가 쓴 노트를 한 곳에서 봅니다." />
 
       <Card className={styles.identity}>
         <Avatar name={displayName} src={avatarUrl} size={56} />
@@ -51,7 +52,7 @@ export function ProfilePage() {
                 const done = progress.completedSlugs.has(l.slug);
                 return (
                   <li key={l.slug} className={done ? styles.done : ''}>
-                    <span className={styles.check} aria-hidden="true">{done ? '✓' : ''}</span>
+                    <span className={styles.check} aria-hidden="true">{done && <Icon name="check" size={11} />}</span>
                     <Link to={`/lessons/${l.slug}`}>{l.order}. {l.title}</Link>
                   </li>
                 );

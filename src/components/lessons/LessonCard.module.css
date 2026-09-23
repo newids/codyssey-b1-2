@@ -1,10 +1,10 @@
 .card { display: flex; gap: var(--space-4); }
-.done { border-color: var(--color-success); }
-.order { font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1; color: var(--color-line-strong); font-weight: 700; }
+.done { box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 0 0 1px color-mix(in oklch, var(--color-success) 55%, transparent); }
+.order { font-size: var(--text-xl); line-height: 1; color: var(--color-ink-3); font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; opacity: 0.7; }
 .done .order { color: var(--color-success); }
 .body { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
 .meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
-.minutes { font-size: var(--text-xs); color: var(--color-ink-3); font-family: var(--font-mono); }
+.minutes { font-size: var(--text-xs); color: var(--color-ink-3); font-variant-numeric: tabular-nums; }
 .title { margin: var(--space-1) 0 0; font-size: var(--text-lg); }
 .link { color: inherit; text-decoration: none; }
 .link::after { content: ''; position: absolute; inset: 0; }

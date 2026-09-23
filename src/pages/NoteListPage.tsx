@@ -44,7 +44,6 @@ export function NoteListPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Notes"
         title="학습 노트"
         description="배운 것을 내 말로 다시 쓴 기록. 다른 학습자의 공개 노트도 읽을 수 있습니다."
         actions={

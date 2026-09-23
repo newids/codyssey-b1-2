@@ -13,6 +13,7 @@
 | 배포 URL | https://codyssey-b1-2-react.vercel.app |
 | GitHub 저장소 | https://github.com/newids/codyssey-b1-2 |
 | 백엔드 | Supabase (Postgres + Auth + RLS), 서울 리전 |
+| 디자인 캔버스 (Claude Design) | https://claude.ai/artifact/9aihqFBtrWy3mQXXe1zvNU — 글래스모피즘 디자인 시스템과 홈/레슨/모바일 목업. 코드 원본은 `src/styles/tokens.css`, 방향 계약은 `index.html` `<body>` 첫 주석, 시스템 기록은 `DESIGN.md` |
 | 스크린샷 | `images/screenshots/` — home-desktop · lesson-detail · notes-empty · lessons-mobile (배포 URL에서 캡쳐) |
 
 ### 1.2 폴더 구조와 역할

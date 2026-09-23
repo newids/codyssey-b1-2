@@ -4,6 +4,7 @@ React 18 + React Router 6 + Supabase로 만든 **React 학습용 SPA**입니다.
 
 - **배포 URL**: https://codyssey-b1-2-react.vercel.app
 - **저장소**: https://github.com/newids/codyssey-b1-2
+- **디자인 캔버스(Claude Design)**: https://claude.ai/artifact/9aihqFBtrWy3mQXXe1zvNU — 글래스모피즘 디자인 시스템(색·유리 재질·타이포·컨트롤)과 홈/레슨/모바일 목업
 - **문서**: [미션 수행 가이드](docs/GUIDE.md) · [평가 설명서](docs/EVALUATION.md) · [평가 항목 답변 (빠른 버전)](docs/EVALUATION-QUICK.md) · [설정 가이드 (Supabase · Google 로그인 · Vercel)](docs/SETUP.md)
 
 ## 문서
@@ -29,7 +30,7 @@ React 18 + React Router 6 + Supabase로 만든 **React 학습용 SPA**입니다.
 | --- |
 | ![로그인](images/screenshots/login.png) |
 
-> 배포 URL에서 캡쳐. 2026-09-22.
+> 배포 URL에서 캡쳐. 2026-09-23 (글래스모피즘 리디자인 반영).
 
 ## 실행 방법
 
@@ -60,7 +61,7 @@ Supabase 프로젝트 생성·스키마·Google 로그인·Vercel 배포 절차�
 | 상태 | 지역 state(`useState`), 전역 Context 3개(Auth · Theme · Toast), 커스텀 훅 6개, `useMemo` / `useCallback` / `React.memo` |
 | 백엔드 | Supabase (Postgres + Auth + RLS). `@supabase/supabase-js` 2.x |
 | 인증 | Supabase Auth — Google 로그인(Google Identity Services 버튼 + `signInWithIdToken`, nonce 검증), 이메일 매직 링크 |
-| 스타일 | CSS Modules + CSS 커스텀 프로퍼티(oklch 색, clamp() 유동 크기), 다크 모드, `prefers-reduced-motion` |
+| 스타일 | 글래스모피즘 — 오로라 배경(60초 주기 드리프트) 위 반투명 유리 표면(`backdrop-filter`), 긴 본문은 86% 읽기 플레이트. CSS Modules + CSS 커스텀 프로퍼티(oklch, clamp()), Pretendard + JetBrains Mono, 다크/라이트 모드, `prefers-reduced-motion`이면 배경 정지. 방향 계약은 `index.html` `<body>` 첫 주석, 시스템 문서는 `DESIGN.md` |
 | 빌드·테스트 | Vite 5, Vitest 2 + Testing Library |
 | 배포 | Vercel (SPA rewrite + 보안 헤더), 환경변수는 Vercel 대시보드 |
 

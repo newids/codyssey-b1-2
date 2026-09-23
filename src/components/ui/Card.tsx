@@ -10,7 +10,7 @@ export interface CardProps extends HTMLAttributes<HTMLElement> {
 }
 
 export function Card({ as: Tag = 'div', interactive = false, padding = 'md', className, children, ...rest }: CardProps) {
-  const classes = [styles.card, styles[padding], interactive ? styles.interactive : '', className ?? ''].filter(Boolean).join(' ');
+  const classes = ['glass', styles.card, styles[padding], interactive ? styles.interactive : '', className ?? ''].filter(Boolean).join(' ');
   return (
     <Tag className={classes} {...rest}>
       {children}
