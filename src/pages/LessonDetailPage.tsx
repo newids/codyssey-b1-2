@@ -112,20 +112,31 @@ export function LessonDetailPage() {
           <nav className={styles.pager} aria-label="레슨 이동">
             {prev ? (
               <Link to={`/lessons/${prev.slug}`} className={styles.pagerLink}>
-                <Button variant="secondary" className={styles.sideButton} icon={<Icon name="arrow-left" size={16} />}>
-                  <span className={styles.pagerLabel}>이전 · {prev.order}. {prev.title}</span>
+                <Button variant="secondary" className={[styles.sideButton, styles.pagerButton].join(' ')} icon={<Icon name="arrow-left" size={16} />}>
+                  <span className={styles.pagerLabel}>
+                    <small>이전 레슨</small>
+                    <strong>{prev.order}. {prev.title}</strong>
+                  </span>
                 </Button>
               </Link>
             ) : null}
             {next ? (
               <Link to={`/lessons/${next.slug}`} className={styles.pagerLink}>
-                <Button className={styles.sideButton} icon={<Icon name="arrow-right" size={16} />}>
-                  <span className={styles.pagerLabel}>다음 · {next.order}. {next.title}</span>
+                <Button className={[styles.sideButton, styles.pagerButton].join(' ')} icon={<Icon name="arrow-right" size={16} />}>
+                  <span className={styles.pagerLabel}>
+                    <small>다음 레슨</small>
+                    <strong>{next.order}. {next.title}</strong>
+                  </span>
                 </Button>
               </Link>
             ) : (
               <Link to="/lessons" className={styles.pagerLink}>
-                <Button className={styles.sideButton} icon={<Icon name="book" size={16} />}>모든 레슨 완료 · 목록으로</Button>
+                <Button className={[styles.sideButton, styles.pagerButton].join(' ')} icon={<Icon name="book" size={16} />}>
+                  <span className={styles.pagerLabel}>
+                    <small>모든 레슨 완료</small>
+                    <strong>레슨 목록으로</strong>
+                  </span>
+                </Button>
               </Link>
             )}
           </nav>
