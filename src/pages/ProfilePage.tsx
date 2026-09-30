@@ -73,6 +73,7 @@ export function ProfilePage() {
             onRetry={quiz.refetch}
             empty={{ title: '아직 푼 퀴즈가 없습니다', description: '레슨 끝의 연습 문제를 풀면 여기에 최고 점수가 기록됩니다.', action: <Link to="/lessons"><Button size="sm" variant="secondary">레슨 보기</Button></Link> }}
           >
+            <div className={styles.tableScroll}>
             <table className={styles.table}>
               <thead>
                 <tr><th scope="col">레슨</th><th scope="col">최고 점수</th><th scope="col">시도</th><th scope="col">최근</th></tr>
@@ -92,6 +93,7 @@ export function ProfilePage() {
                 })}
               </tbody>
             </table>
+            </div>
           </AsyncBoundary>
         </Card>
       </div>

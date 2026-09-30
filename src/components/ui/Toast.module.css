@@ -9,6 +9,7 @@
 }
 .success { background: color-mix(in oklch, var(--color-success) 88%, transparent); color: white; }
 .error { background: color-mix(in oklch, var(--color-danger) 88%, transparent); color: white; }
-.close { display: grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: oklch(100% 0 0 / 0.12); border: 0; color: inherit; cursor: pointer; opacity: 0.85; }
+.close { position: relative; display: grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: oklch(100% 0 0 / 0.12); border: 0; color: inherit; cursor: pointer; opacity: 0.85; }
 .close:hover { opacity: 1; background: oklch(100% 0 0 / 0.2); }
+.close::after { content: ''; position: absolute; inset: -0.55rem; }
 @keyframes toastIn { from { opacity: 0; transform: translateY(16px) scale(0.96); } to { opacity: 1; transform: none; } }

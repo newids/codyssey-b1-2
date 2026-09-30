@@ -3,9 +3,9 @@ name: React Playground
 description: 느리게 흐르는 오로라 위에 떠 있는 서리 낀 OS 유리 — React 학습 SPA의 글래스모피즘 디자인 시스템
 colors:
   ground: "oklch(98.5% 0.008 245)"
-  aurora-cyan: "oklch(78% 0.15 212)"
-  aurora-violet: "oklch(76% 0.16 302)"
-  aurora-mint: "oklch(83% 0.14 162)"
+  aurora-cyan: "oklch(82% 0.13 212)"
+  aurora-violet: "oklch(80% 0.13 302)"
+  aurora-mint: "oklch(86% 0.12 162)"
   glass: "oklch(100% 0 0 / 0.42)"
   glass-strong: "oklch(100% 0 0 / 0.58)"
   glass-soft: "oklch(100% 0 0 / 0.26)"
@@ -14,19 +14,19 @@ colors:
   glass-highlight: "oklch(100% 0 0 / 0.95)"
   plate: "oklch(100% 0 0 / 0.84)"
   ink: "oklch(21% 0.03 260)"
-  ink-2: "oklch(38% 0.03 260)"
-  ink-3: "oklch(44% 0.03 260)"
+  ink-2: "oklch(34% 0.03 260)"
+  ink-3: "oklch(40% 0.03 260)"
   line: "oklch(70% 0.02 250 / 0.28)"
   line-strong: "oklch(60% 0.03 250 / 0.42)"
   accent: "oklch(56% 0.13 220)"
-  accent-strong: "oklch(44% 0.13 222)"
+  accent-strong: "oklch(38% 0.13 225)"
   accent-soft: "oklch(88% 0.06 215 / 0.7)"
   accent-ink: "oklch(100% 0 0)"
-  success: "oklch(50% 0.14 155)"
+  success: "oklch(44% 0.13 155)"
   success-soft: "oklch(90% 0.07 155 / 0.75)"
-  danger: "oklch(52% 0.19 27)"
+  danger: "oklch(48% 0.19 27)"
   danger-soft: "oklch(92% 0.05 27 / 0.8)"
-  warn: "oklch(60% 0.14 70)"
+  warn: "oklch(46% 0.12 65)"
   warn-soft: "oklch(92% 0.07 85 / 0.8)"
   code-bg: "oklch(24% 0.035 262 / 0.92)"
   code-ink: "oklch(93% 0.02 90)"
@@ -212,6 +212,7 @@ components:
 ---
 
 > 2026-09-23 보정: 라이트 모드는 지면을 더 밝게(98.5%) 하되 오로라를 더 진하게, 유리는 더 투명하게(42/58/26%) + 135° 광택(`--glass-sheen`)을 더해 블러가 드러나게 했다. 다크 모드 지면 12%, 플레이트 17%/90%. 오로라는 필드마다 33/42/51초 주기, 이동 폭 14~18vmax.
+> 2026-09-30 색 대비 보정(better-colors 스킬, 브라우저 합성 방식으로 실측): 모든 본문·보조 텍스트·링크·배지 조합이 두 테마의 모든 표면(맨 오로라, glass-soft/glass/glass-strong, plate)에서 WCAG AA 4.5:1 이상(최저 라이트 4.79, 다크 4.65). 이를 위해 라이트 오로라 명도↑·채도↓, ink-2/ink-3/accent-strong/시맨틱 색 명도↓, 다크 오로라 명도↓·ink-2/ink-3↑. 정적 텍스트(레슨 부제)는 accent 대신 ink-2 — 한 색 한 의미. 터치 영역 44px, 본문·입력 16px 하한, 320~1440 가로 넘침 0.
 
 # Design System: React Playground
 

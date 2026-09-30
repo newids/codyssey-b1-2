@@ -8,9 +8,9 @@
 
   /* 층 0 — 배경과 오로라 */
   --color-ground: oklch(98.5% 0.008 245);
-  --aurora-1: oklch(78% 0.15 212);   /* React 하늘 — 유리 뒤에서 번져 보일 만큼 진하게 */
-  --aurora-2: oklch(76% 0.16 302);   /* 보라 */
-  --aurora-3: oklch(83% 0.14 162);   /* 민트 */
+  --aurora-1: oklch(82% 0.13 212);   /* React 하늘 — 유리 뒤에서 번져 보이되 맨 텍스트도 AA 를 지키는 밝기 */
+  --aurora-2: oklch(80% 0.13 302);   /* 보라 */
+  --aurora-3: oklch(86% 0.12 162);   /* 민트 */
   --aurora-opacity: 0.95;
   --aurora-blur: 56px;
 
@@ -32,21 +32,21 @@
 
   /* 층 3 — 잉크 */
   --color-ink: oklch(21% 0.03 260);
-  --color-ink-2: oklch(38% 0.03 260);
-  --color-ink-3: oklch(44% 0.03 260);
+  --color-ink-2: oklch(34% 0.03 260);
+  --color-ink-3: oklch(40% 0.03 260);
   --color-line: oklch(70% 0.02 250 / 0.28);
   --color-line-strong: oklch(60% 0.03 250 / 0.42);
 
   --color-accent: oklch(56% 0.13 220);
-  --color-accent-strong: oklch(44% 0.13 222);
+  --color-accent-strong: oklch(38% 0.13 225);
   --color-accent-soft: oklch(88% 0.06 215 / 0.7);
   --color-accent-ink: oklch(100% 0 0);
 
-  --color-success: oklch(50% 0.14 155);
+  --color-success: oklch(44% 0.13 155);
   --color-success-soft: oklch(90% 0.07 155 / 0.75);
-  --color-danger: oklch(52% 0.19 27);
+  --color-danger: oklch(48% 0.19 27);
   --color-danger-soft: oklch(92% 0.05 27 / 0.8);
-  --color-warn: oklch(60% 0.14 70);
+  --color-warn: oklch(46% 0.12 65);
   --color-warn-soft: oklch(92% 0.07 85 / 0.8);
 
   --color-code-bg: oklch(24% 0.035 262 / 0.92);
@@ -59,9 +59,9 @@
   --display-weight: 800;
   --display-tracking: -0.03em;
 
-  --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
-  --text-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9rem);
-  --text-md: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --text-xs: clamp(0.78rem, 0.74rem + 0.15vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.84rem + 0.15vw, 0.925rem);
+  --text-md: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
   --text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
   --text-xl: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
   --text-2xl: clamp(1.9rem, 1.4rem + 2.2vw, 3rem);
@@ -100,10 +100,10 @@
   :root:not([data-theme='light']) {
     color-scheme: dark;
     --color-ground: oklch(12% 0.025 262);
-    --aurora-1: oklch(44% 0.15 215);
-    --aurora-2: oklch(38% 0.17 300);
-    --aurora-3: oklch(40% 0.13 165);
-    --aurora-opacity: 0.7;
+    --aurora-1: oklch(38% 0.13 215);
+    --aurora-2: oklch(33% 0.15 300);
+    --aurora-3: oklch(35% 0.11 165);
+    --aurora-opacity: 0.65;
     --glass-bg: oklch(100% 0 0 / 0.08);
     --glass-sheen: oklch(100% 0 0 / 0.12);
     --glass-bg-strong: oklch(100% 0 0 / 0.11);
@@ -115,19 +115,19 @@
     --glass-shadow-hover: 0 24px 50px -18px oklch(0% 0 0 / 0.7), 0 4px 12px -4px oklch(0% 0 0 / 0.4);
     --plate-bg: oklch(17% 0.03 262 / 0.9);
     --color-ink: oklch(95% 0.012 90);
-    --color-ink-2: oklch(80% 0.015 90);
-    --color-ink-3: oklch(66% 0.015 90);
+    --color-ink-2: oklch(84% 0.015 90);
+    --color-ink-3: oklch(78% 0.015 90);
     --color-line: oklch(85% 0.02 250 / 0.14);
     --color-line-strong: oklch(85% 0.02 250 / 0.26);
     --color-accent: oklch(78% 0.1 210);
     --color-accent-strong: oklch(86% 0.08 210);
     --color-accent-soft: oklch(40% 0.07 220 / 0.6);
     --color-accent-ink: oklch(16% 0.03 260);
-    --color-success: oklch(76% 0.13 155);
+    --color-success: oklch(82% 0.13 155);
     --color-success-soft: oklch(35% 0.08 155 / 0.6);
-    --color-danger: oklch(74% 0.16 27);
+    --color-danger: oklch(80% 0.13 27);
     --color-danger-soft: oklch(34% 0.09 27 / 0.6);
-    --color-warn: oklch(80% 0.13 80);
+    --color-warn: oklch(84% 0.12 80);
     --color-warn-soft: oklch(36% 0.08 80 / 0.6);
     --color-code-bg: oklch(9% 0.02 262 / 0.9);
   }
@@ -136,10 +136,10 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
   --color-ground: oklch(12% 0.025 262);
-  --aurora-1: oklch(44% 0.15 215);
-  --aurora-2: oklch(38% 0.17 300);
-  --aurora-3: oklch(40% 0.13 165);
-  --aurora-opacity: 0.7;
+  --aurora-1: oklch(38% 0.13 215);
+  --aurora-2: oklch(33% 0.15 300);
+  --aurora-3: oklch(35% 0.11 165);
+  --aurora-opacity: 0.65;
   --glass-bg: oklch(100% 0 0 / 0.08);
     --glass-sheen: oklch(100% 0 0 / 0.12);
   --glass-bg-strong: oklch(100% 0 0 / 0.11);
@@ -151,19 +151,19 @@
   --glass-shadow-hover: 0 24px 50px -18px oklch(0% 0 0 / 0.7), 0 4px 12px -4px oklch(0% 0 0 / 0.4);
   --plate-bg: oklch(17% 0.03 262 / 0.9);
   --color-ink: oklch(95% 0.012 90);
-  --color-ink-2: oklch(80% 0.015 90);
-  --color-ink-3: oklch(66% 0.015 90);
+  --color-ink-2: oklch(84% 0.015 90);
+  --color-ink-3: oklch(78% 0.015 90);
   --color-line: oklch(85% 0.02 250 / 0.14);
   --color-line-strong: oklch(85% 0.02 250 / 0.26);
   --color-accent: oklch(78% 0.1 210);
   --color-accent-strong: oklch(86% 0.08 210);
   --color-accent-soft: oklch(40% 0.07 220 / 0.6);
   --color-accent-ink: oklch(16% 0.03 260);
-  --color-success: oklch(76% 0.13 155);
+  --color-success: oklch(82% 0.13 155);
   --color-success-soft: oklch(35% 0.08 155 / 0.6);
-  --color-danger: oklch(74% 0.16 27);
+  --color-danger: oklch(80% 0.13 27);
   --color-danger-soft: oklch(34% 0.09 27 / 0.6);
-  --color-warn: oklch(80% 0.13 80);
+  --color-warn: oklch(84% 0.12 80);
   --color-warn-soft: oklch(36% 0.08 80 / 0.6);
   --color-code-bg: oklch(9% 0.02 262 / 0.9);
 }

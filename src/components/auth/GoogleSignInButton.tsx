@@ -50,7 +50,8 @@ export function GoogleSignInButton({ onCredential, onFallback, disabled = false 
           size: 'large',
           text: 'continue_with',
           shape: 'pill',
-          width: 320,
+          // GIS 버튼은 px 고정 폭(200~400)만 받는다 — 컨테이너에 맞춰 계산해 좁은 화면에서 넘치지 않게
+          width: Math.round(Math.max(200, Math.min(320, containerRef.current.clientWidth))),
           locale: 'ko',
           logo_alignment: 'left',
         });

@@ -1,4 +1,4 @@
-.content { max-width: var(--measure); }
+.content { max-width: var(--measure); min-width: 0; }
 .heading { margin-top: var(--space-6); font-size: var(--text-xl); }
 .paragraph { color: var(--color-ink); line-height: 1.85; }
 .list { padding-left: 1.2em; line-height: 1.8; }

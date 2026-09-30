@@ -8,6 +8,7 @@
 .stats dd span { font-size: var(--text-sm); color: var(--color-ink-3); font-weight: 400; }
 @media (max-width: 640px) { .stats { margin-left: 0; width: 100%; justify-content: space-between; } .stats div { align-items: flex-start; } }
 .columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: var(--space-4); }
+.columns > * { min-width: 0; }
 .sectionTitle { font-size: var(--text-lg); margin-bottom: var(--space-4); }
 .lessonList { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-sm); }
 .lessonList li { display: flex; align-items: center; gap: var(--space-2); color: var(--color-ink-3); }
@@ -17,7 +18,8 @@
 .check { display: inline-grid; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--color-line-strong); }
 .done .check { background: var(--color-success); border-color: var(--color-success); color: white; }
 .muted { margin: var(--space-3) 0 0; font-size: var(--text-sm); color: var(--color-ink-3); }
-.table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.tableScroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table { width: 100%; min-width: 22rem; border-collapse: collapse; font-size: var(--text-sm); }
 .table th { text-align: left; font-weight: 600; color: var(--color-ink-3); font-size: var(--text-xs); padding: 0 0 var(--space-2); border-bottom: 1px solid var(--color-line); }
 .table td { padding: var(--space-2) 0; border-bottom: 1px solid var(--color-line); vertical-align: middle; }
 .table a { color: inherit; text-decoration: none; }

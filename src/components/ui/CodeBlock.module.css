@@ -1,10 +1,10 @@
-.figure { margin: var(--space-4) 0 var(--space-5); }
-.caption { font-size: var(--text-xs); color: var(--color-ink-3); margin-bottom: var(--space-2); font-family: var(--font-mono); }
+.figure { margin: var(--space-4) 0 var(--space-5); min-width: 0; max-width: 100%; }
+.caption { font-size: var(--text-xs); color: var(--color-ink-3); margin-bottom: var(--space-2); font-family: var(--font-mono); overflow-wrap: anywhere; }
 .pre {
   position: relative; margin: 0; padding: var(--space-4) var(--space-5);
   background: var(--color-code-bg); color: var(--color-code-ink);
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  border-radius: var(--radius-md); overflow-x: auto; font-size: var(--text-sm); line-height: 1.7;
+  border-radius: var(--radius-md); overflow-x: auto; max-width: 100%; font-size: var(--text-sm); line-height: 1.7; -webkit-overflow-scrolling: touch;
   box-shadow: var(--glass-shadow), inset 0 1px 0 oklch(100% 0 0 / 0.12);
 }
 .pre::after { content: attr(data-lang); position: absolute; inset-block-start: 0.5rem; inset-inline-end: 0.75rem; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; }

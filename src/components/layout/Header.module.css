@@ -8,7 +8,7 @@
 .brandText { font-weight: 800; letter-spacing: -0.02em; font-size: var(--text-lg); }
 .brandText em { font-style: normal; color: var(--color-accent-strong); font-weight: 600; }
 
-.menuButton { display: none; width: 2.6rem; height: 2.6rem; border: 0; border-radius: 50%; background: transparent; color: var(--color-ink); cursor: pointer; place-items: center; }
+.menuButton { display: none; width: 2.75rem; height: 2.75rem; border: 0; border-radius: 50%; background: transparent; color: var(--color-ink); cursor: pointer; place-items: center; }
 .menuButton:hover { background: var(--glass-bg-strong); }
 
 .nav { display: flex; align-items: center; gap: var(--space-4); }
@@ -39,6 +39,6 @@
   }
   .navOpen { transform: none; opacity: 1; pointer-events: auto; }
   .list { flex-direction: column; background: transparent; box-shadow: none; padding: 0; }
-  .link { display: block; padding: 0.75rem 1rem; }
+  .link { display: block; padding: 0.85rem 1rem; }
   .actions { justify-content: space-between; }
 }

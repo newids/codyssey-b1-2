@@ -95,7 +95,7 @@ src/
   hooks/            useAsync, useNotes(useNote), useNoteForm, useLessonProgress, useQuizAttempts, useDebounce, useOpenNoteComposer
   context/          AuthContext, ThemeContext, ToastContext
   lib/              supabase 클라이언트, api/(notes · progress · auth), validation, errors, format, quiz, types
-  data/lessons.ts   레슨 8개 본문 + 퀴즈 (정적 데이터)
+  data/lessons/     레슨 8개 본문 + 퀴즈 (레슨마다 파일 하나, 정적 데이터)
   styles/           tokens.css (디자인 토큰), global.css
 supabase/migrations 스키마 + RLS
 docs/               가이드 · 평가 설명서 · 설정 가이드
