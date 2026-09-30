@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "React Playground 아키텍처",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "화면 · 컴포넌트"
+        },
+        "backend": {
+          "label": "실행되는 코드"
+        },
+        "database": {
+          "label": "데이터 · state"
+        },
+        "cloud": {
+          "label": "도구 · 배포"
+        },
+        "security": {
+          "label": "주의 · 인증"
+        },
+        "messagebus": {
+          "label": "이벤트"
+        },
+        "external": {
+          "label": "사용자 · 바깥"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "src/App.tsx",
+      "pos": [
+        40,
+        190
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "sublabel": "Routes · 라우트 10개"
+    },
+    {
+      "id": "pages",
+      "type": "frontend",
+      "label": "src/pages",
+      "pos": [
+        270,
+        190
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "sublabel": "HomePage 등 페이지 10개"
+    },
+    {
+      "id": "components",
+      "type": "frontend",
+      "label": "src/components",
+      "pos": [
+        270,
+        330
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "sublabel": "layout · notes · lessons · ui"
+    },
+    {
+      "id": "hooks",
+      "type": "backend",
+      "label": "src/hooks",
+      "pos": [
+        500,
+        190
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "sublabel": "useAsync · useNotes 등 7개"
+    },
+    {
+      "id": "context",
+      "type": "database",
+      "label": "src/context",
+      "pos": [
+        470,
+        40
+      ],
+      "size": [
+        230,
+        74
+      ],
+      "sublabel": "AuthContext · ThemeContext · ToastContext",
+      "tag": "메모 앱에서는 App의 state"
+    },
+    {
+      "id": "lib",
+      "type": "backend",
+      "label": "src/lib/api + supabase.ts",
+      "pos": [
+        485,
+        330
+      ],
+      "size": [
+        200,
+        74
+      ],
+      "sublabel": "notes.ts · progress.ts · auth.ts",
+      "tag": "메모 앱에서는 storage.ts · api/tips.ts"
+    },
+    {
+      "id": "auth",
+      "type": "security",
+      "label": "Supabase Auth",
+      "pos": [
+        780,
+        50
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "sublabel": "Google · 이메일 링크 로그인",
+      "brand": "supabase"
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "Supabase DB",
+      "pos": [
+        780,
+        185
+      ],
+      "size": [
+        170,
+        74
+      ],
+      "sublabel": "notes 등 테이블 4개",
+      "tag": "메모 앱에서는 localStorage",
+      "brand": "supabase"
+    },
+    {
+      "id": "vercel",
+      "type": "cloud",
+      "label": "Vercel",
+      "pos": [
+        40,
+        330
+      ],
+      "size": [
+        170,
+        64
+      ],
+      "sublabel": "빌드한 파일을 배포",
+      "brand": "vercel"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "① 라우팅",
+      "wraps": [
+        "app",
+        "pages"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "② 커스텀 훅",
+      "wraps": [
+        "hooks"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "③ 전역 상태 (Context)",
+      "wraps": [
+        "context"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "④ 백엔드 (Supabase)",
+      "wraps": [
+        "auth",
+        "db"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "⑤ 배포 (Vercel)",
+      "wraps": [
+        "vercel"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "deploy",
+      "from": "vercel",
+      "to": "app",
+      "variant": "dashed"
+    },
+    {
+      "id": "route",
+      "from": "app",
+      "to": "pages",
+      "variant": "emphasis"
+    },
+    {
+      "id": "compose",
+      "from": "pages",
+      "to": "components"
+    },
+    {
+      "id": "use-hooks",
+      "from": "pages",
+      "to": "hooks",
+      "variant": "emphasis"
+    },
+    {
+      "id": "use-context",
+      "from": "pages",
+      "to": "context",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [
+        [
+          355,
+          77
+        ]
+      ]
+    },
+    {
+      "id": "fetch",
+      "from": "hooks",
+      "to": "lib",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "session",
+      "from": "context",
+      "to": "auth",
+      "label": "세션"
+    },
+    {
+      "id": "query",
+      "from": "lib",
+      "to": "db",
+      "label": "읽기 · 쓰기",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "bottom"
+    }
+  ]
+}

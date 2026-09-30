@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "직접 DOM 조작과 React 비교",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "화면 · 컴포넌트"
+        },
+        "backend": {
+          "label": "실행되는 코드"
+        },
+        "database": {
+          "label": "데이터 · state"
+        },
+        "cloud": {
+          "label": "도구 · 배포"
+        },
+        "security": {
+          "label": "주의 · 인증"
+        },
+        "messagebus": {
+          "label": "이벤트"
+        },
+        "external": {
+          "label": "사용자 · 바깥"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "d-event",
+      "type": "messagebus",
+      "label": "이벤트",
+      "pos": [
+        40,
+        50
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "사용자가 클릭"
+    },
+    {
+      "id": "d-find",
+      "type": "backend",
+      "label": "요소 찾기",
+      "pos": [
+        250,
+        50
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "querySelector"
+    },
+    {
+      "id": "d-edit",
+      "type": "backend",
+      "label": "요소 하나하나 직접 고치기",
+      "pos": [
+        460,
+        50
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "고칠 곳을 전부 기억해야 한다"
+    },
+    {
+      "id": "d-bug",
+      "type": "security",
+      "label": "화면 ≠ 데이터",
+      "pos": [
+        670,
+        50
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "하나라도 빠뜨리면 어긋난다"
+    },
+    {
+      "id": "r-event",
+      "type": "messagebus",
+      "label": "이벤트",
+      "pos": [
+        40,
+        200
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "사용자가 클릭"
+    },
+    {
+      "id": "r-state",
+      "type": "database",
+      "label": "state 변경",
+      "pos": [
+        250,
+        200
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "setState 호출"
+    },
+    {
+      "id": "r-render",
+      "type": "frontend",
+      "label": "화면 다시 계산",
+      "pos": [
+        460,
+        200
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "React가 한다"
+    },
+    {
+      "id": "r-dom",
+      "type": "frontend",
+      "label": "바뀐 부분만 DOM 반영",
+      "pos": [
+        670,
+        200
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "화면 = 데이터 (항상 일치)"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "직접 DOM 조작",
+      "wraps": [
+        "d-event",
+        "d-find",
+        "d-edit",
+        "d-bug"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "React",
+      "wraps": [
+        "r-event",
+        "r-state",
+        "r-render",
+        "r-dom"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "d1",
+      "from": "d-event",
+      "to": "d-find"
+    },
+    {
+      "id": "d2",
+      "from": "d-find",
+      "to": "d-edit"
+    },
+    {
+      "id": "d3",
+      "from": "d-edit",
+      "to": "d-bug",
+      "variant": "security"
+    },
+    {
+      "id": "r1",
+      "from": "r-event",
+      "to": "r-state",
+      "variant": "emphasis"
+    },
+    {
+      "id": "r2",
+      "from": "r-state",
+      "to": "r-render",
+      "variant": "emphasis"
+    },
+    {
+      "id": "r3",
+      "from": "r-render",
+      "to": "r-dom",
+      "variant": "emphasis"
+    }
+  ]
+}

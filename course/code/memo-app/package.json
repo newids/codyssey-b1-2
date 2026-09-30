@@ -1,0 +1,26 @@
+{
+  "name": "memo-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "React 첫걸음 과정 실습 — 학습 메모 앱",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "checkpoint": "node scripts/checkpoint.mjs",
+    "verify": "node scripts/verify-checkpoints.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2"
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "코드가 화면이 되기까지",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "화면 · 컴포넌트"
+        },
+        "backend": {
+          "label": "실행되는 코드"
+        },
+        "database": {
+          "label": "데이터 · state"
+        },
+        "cloud": {
+          "label": "도구 · 배포"
+        },
+        "security": {
+          "label": "주의 · 인증"
+        },
+        "messagebus": {
+          "label": "이벤트"
+        },
+        "external": {
+          "label": "사용자 · 바깥"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "tsx",
+      "type": "frontend",
+      "label": ".tsx 파일",
+      "pos": [
+        40,
+        50
+      ],
+      "size": [
+        150,
+        60
+      ],
+      "sublabel": "내가 쓴 코드"
+    },
+    {
+      "id": "check",
+      "type": "security",
+      "label": "타입 검사",
+      "pos": [
+        240,
+        50
+      ],
+      "size": [
+        150,
+        60
+      ],
+      "sublabel": "오류는 여기서 잡힌다"
+    },
+    {
+      "id": "vite",
+      "type": "cloud",
+      "label": "Vite 변환",
+      "pos": [
+        440,
+        50
+      ],
+      "size": [
+        150,
+        60
+      ],
+      "sublabel": "TSX → JavaScript"
+    },
+    {
+      "id": "run",
+      "type": "backend",
+      "label": "JavaScript 실행",
+      "pos": [
+        440,
+        210
+      ],
+      "size": [
+        150,
+        60
+      ],
+      "sublabel": "TypeScript는 모른다"
+    },
+    {
+      "id": "screen",
+      "type": "frontend",
+      "label": "화면",
+      "pos": [
+        640,
+        210
+      ],
+      "size": [
+        150,
+        60
+      ],
+      "sublabel": "사용자가 보는 결과"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "개발 도구 (내 컴퓨터) · TypeScript를 안다",
+      "wraps": [
+        "tsx",
+        "check",
+        "vite"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "브라우저",
+      "wraps": [
+        "run",
+        "screen"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "tsx-check",
+      "from": "tsx",
+      "to": "check",
+      "variant": "emphasis"
+    },
+    {
+      "id": "check-vite",
+      "from": "check",
+      "to": "vite",
+      "label": "통과",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vite-run",
+      "from": "vite",
+      "to": "run",
+      "label": ".js 파일만 전달",
+      "variant": "emphasis",
+      "labelAt": [
+        515,
+        154
+      ]
+    },
+    {
+      "id": "run-screen",
+      "from": "run",
+      "to": "screen",
+      "variant": "emphasis"
+    }
+  ]
+}

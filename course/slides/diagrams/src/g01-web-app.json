@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "웹 앱 전체 구조",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "화면 · 컴포넌트"
+        },
+        "backend": {
+          "label": "실행되는 코드"
+        },
+        "database": {
+          "label": "데이터 · state"
+        },
+        "cloud": {
+          "label": "도구 · 배포"
+        },
+        "security": {
+          "label": "주의 · 인증"
+        },
+        "messagebus": {
+          "label": "이벤트"
+        },
+        "external": {
+          "label": "사용자 · 바깥"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "사용자",
+      "pos": [
+        40,
+        160
+      ],
+      "size": [
+        120,
+        60
+      ],
+      "sublabel": "클릭 · 입력"
+    },
+    {
+      "id": "router",
+      "type": "frontend",
+      "label": "라우터",
+      "pos": [
+        230,
+        40
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "주소에 맞는 화면 (소개만)"
+    },
+    {
+      "id": "components",
+      "type": "frontend",
+      "label": "컴포넌트",
+      "pos": [
+        230,
+        160
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "화면 조각"
+    },
+    {
+      "id": "state",
+      "type": "database",
+      "label": "상태 (state)",
+      "pos": [
+        450,
+        160
+      ],
+      "size": [
+        160,
+        60
+      ],
+      "sublabel": "화면이 기억하는 값"
+    },
+    {
+      "id": "hosting",
+      "type": "cloud",
+      "label": "정적 호스팅 / CDN",
+      "pos": [
+        230,
+        300
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "배포 (소개만)"
+    },
+    {
+      "id": "auth",
+      "type": "security",
+      "label": "인증",
+      "pos": [
+        750,
+        40
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sublabel": "로그인"
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "API",
+      "pos": [
+        750,
+        160
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sublabel": "데이터 주고받기"
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "DB",
+      "pos": [
+        750,
+        280
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sublabel": "데이터 저장"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "사용자 브라우저 · React SPA",
+      "wraps": [
+        "router",
+        "components",
+        "state"
+      ]
+    },
+    {
+      "kind": "security-group",
+      "label": "이 과정에서 배우는 범위",
+      "wraps": [
+        "components",
+        "state"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "백엔드 (소개만)",
+      "wraps": [
+        "auth",
+        "api",
+        "db"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "user-components",
+      "from": "user",
+      "to": "components",
+      "variant": "emphasis"
+    },
+    {
+      "id": "components-state",
+      "from": "components",
+      "to": "state",
+      "variant": "emphasis"
+    },
+    {
+      "id": "state-api",
+      "from": "state",
+      "to": "api",
+      "label": "요청 ↔ 응답"
+    },
+    {
+      "id": "api-auth",
+      "from": "api",
+      "to": "auth"
+    },
+    {
+      "id": "api-db",
+      "from": "api",
+      "to": "db"
+    },
+    {
+      "id": "hosting-browser",
+      "from": "hosting",
+      "to": "components",
+      "label": "HTML · JS 파일 전달",
+      "variant": "dashed"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "props 흐름",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "화면 · 컴포넌트"
+        },
+        "backend": {
+          "label": "실행되는 코드"
+        },
+        "database": {
+          "label": "데이터 · state"
+        },
+        "cloud": {
+          "label": "도구 · 배포"
+        },
+        "security": {
+          "label": "주의 · 인증"
+        },
+        "messagebus": {
+          "label": "이벤트"
+        },
+        "external": {
+          "label": "사용자 · 바깥"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "App",
+      "type": "database",
+      "label": "App",
+      "pos": [
+        260,
+        40
+      ],
+      "size": [
+        240,
+        60
+      ],
+      "sublabel": "state: notes (원본 데이터)"
+    },
+    {
+      "id": "NoteList",
+      "type": "frontend",
+      "label": "NoteList",
+      "pos": [
+        260,
+        160
+      ],
+      "size": [
+        240,
+        60
+      ],
+      "sublabel": "props: notes"
+    },
+    {
+      "id": "NoteCard1",
+      "type": "frontend",
+      "label": "NoteCard",
+      "pos": [
+        60,
+        280
+      ],
+      "size": [
+        240,
+        60
+      ],
+      "sublabel": "props: note"
+    },
+    {
+      "id": "NoteCard2",
+      "type": "frontend",
+      "label": "NoteCard",
+      "pos": [
+        460,
+        280
+      ],
+      "size": [
+        240,
+        60
+      ],
+      "sublabel": "props: note"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "props는 읽기 전용",
+      "wraps": [
+        "NoteList",
+        "NoteCard1",
+        "NoteCard2"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "app-list",
+      "from": "App",
+      "to": "NoteList",
+      "label": "notes",
+      "variant": "emphasis",
+      "labelAt": [
+        380,
+        124
+      ]
+    },
+    {
+      "id": "list-card1",
+      "from": "NoteList",
+      "to": "NoteCard1",
+      "label": "note",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "list-card2",
+      "from": "NoteList",
+      "to": "NoteCard2",
+      "label": "note",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ]
+}

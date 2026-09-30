@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "이벤트 → state → 렌더링 순환",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "화면 · 컴포넌트"
+        },
+        "backend": {
+          "label": "실행되는 코드"
+        },
+        "database": {
+          "label": "데이터 · state"
+        },
+        "cloud": {
+          "label": "도구 · 배포"
+        },
+        "security": {
+          "label": "주의 · 인증"
+        },
+        "messagebus": {
+          "label": "이벤트"
+        },
+        "external": {
+          "label": "사용자 · 바깥"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "사용자",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "화면을 보고 누른다"
+    },
+    {
+      "id": "handler",
+      "type": "backend",
+      "label": "이벤트 핸들러 실행",
+      "pos": [
+        280,
+        40
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "예: handleAdd"
+    },
+    {
+      "id": "setstate",
+      "type": "database",
+      "label": "setState 호출",
+      "pos": [
+        520,
+        40
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "state가 바뀐다"
+    },
+    {
+      "id": "render",
+      "type": "frontend",
+      "label": "리렌더링",
+      "pos": [
+        520,
+        190
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "컴포넌트 함수 다시 실행"
+    },
+    {
+      "id": "screen",
+      "type": "frontend",
+      "label": "새 화면",
+      "pos": [
+        40,
+        190
+      ],
+      "size": [
+        170,
+        60
+      ],
+      "sublabel": "바뀐 state가 반영된다"
+    }
+  ],
+  "connections": [
+    {
+      "id": "click",
+      "from": "user",
+      "to": "handler",
+      "label": "클릭",
+      "variant": "emphasis"
+    },
+    {
+      "id": "call",
+      "from": "handler",
+      "to": "setstate",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rerender",
+      "from": "setstate",
+      "to": "render",
+      "variant": "emphasis"
+    },
+    {
+      "id": "paint",
+      "from": "render",
+      "to": "screen",
+      "label": "바뀐 부분만 화면에 반영",
+      "variant": "emphasis"
+    },
+    {
+      "id": "see",
+      "from": "screen",
+      "to": "user",
+      "variant": "emphasis"
+    }
+  ]
+}

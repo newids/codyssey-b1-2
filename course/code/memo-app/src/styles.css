@@ -1,0 +1,294 @@
+/* 3일 동안 쓸 스타일을 미리 넣어 두었다. 실습에서는 이 파일을 고치지 않아도 된다. */
+:root {
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --text: #1c2333;
+  --muted: #5b6478;
+  --line: #d9deea;
+  --accent: #2563eb;
+  --accent-text: #ffffff;
+  --important: #b45309;
+  --important-bg: #fff7e6;
+  --danger: #c0262d;
+  --danger-bg: #fdeeee;
+  --radius: 12px;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12151c;
+    --surface: #1c212c;
+    --text: #e8ebf2;
+    --muted: #a3acc0;
+    --line: #333b4d;
+    --accent: #7aa7ff;
+    --accent-text: #0e1320;
+    --important: #f5b85a;
+    --important-bg: #33280f;
+    --danger: #ff8a8f;
+    --danger-bg: #3a1c1f;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+/* 머리글 */
+.header {
+  margin-bottom: 24px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.9rem;
+}
+
+.header-meta {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+/* 버튼 */
+.btn {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+}
+
+.btn:focus-visible,
+.input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.btn-danger {
+  color: var(--danger);
+}
+
+.btn.is-active {
+  border-color: var(--important);
+  background: var(--important-bg);
+  color: var(--important);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.toolbar .input {
+  flex: 1;
+  min-width: 160px;
+}
+
+/* 메모 목록과 카드 */
+.note-list {
+  display: grid;
+  /* minmax(0, 1fr): 긴 한 줄 글이 있어도 카드가 화면 밖으로 늘어나지 않게 한다 */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note-card {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.note-card.is-important {
+  border-color: var(--important);
+}
+
+.note-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.note-title {
+  flex: 1;
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.note-body {
+  margin: 8px 0 0;
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+
+.note-body.is-collapsed {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.note-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--important-bg);
+  color: var(--important);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.star {
+  min-width: 40px;
+  font-size: 1.1rem;
+}
+
+.empty,
+.state {
+  margin: 0;
+  padding: 24px 16px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  text-align: center;
+}
+
+.state.is-error {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.state.is-error p {
+  margin: 0 0 12px;
+}
+
+/* 메모 작성 폼 */
+.note-form {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.field {
+  display: grid;
+  gap: 4px;
+}
+
+.field-label {
+  font-weight: 600;
+}
+
+.input {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+textarea.input {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.input.has-error {
+  border-color: var(--danger);
+}
+
+.field-error {
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+.field-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+/* 오늘의 React 팁 */
+.tips {
+  margin-top: 32px;
+}
+
+.tips-title {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+}
+
+.tip-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tip-item {
+  padding: 12px 16px;
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.tip-item strong {
+  display: block;
+}
+
+.tip-item span {
+  color: var(--muted);
+}
+
+/* 바닥글 */
+.footer {
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}

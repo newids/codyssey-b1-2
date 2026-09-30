@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "state 끌어올리기",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "화면 · 컴포넌트"
+        },
+        "backend": {
+          "label": "실행되는 코드"
+        },
+        "database": {
+          "label": "데이터 · state"
+        },
+        "cloud": {
+          "label": "도구 · 배포"
+        },
+        "security": {
+          "label": "주의 · 인증"
+        },
+        "messagebus": {
+          "label": "이벤트"
+        },
+        "external": {
+          "label": "사용자 · 바깥"
+        }
+      }
+    },
+    "viewBox": [
+      990,
+      500
+    ]
+  },
+  "components": [
+    {
+      "id": "bApp",
+      "type": "frontend",
+      "label": "App",
+      "pos": [
+        115,
+        50
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "sublabel": "state 없음"
+    },
+    {
+      "id": "bHeader",
+      "type": "security",
+      "label": "Header",
+      "pos": [
+        40,
+        190
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sublabel": "중요 개수를 알 수 없다"
+    },
+    {
+      "id": "bCard",
+      "type": "database",
+      "label": "NoteCard",
+      "pos": [
+        210,
+        190
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sublabel": "state: isImportant"
+    },
+    {
+      "id": "aApp",
+      "type": "database",
+      "label": "App",
+      "pos": [
+        600,
+        50
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sublabel": "state: notes"
+    },
+    {
+      "id": "aHeader",
+      "type": "frontend",
+      "label": "Header",
+      "pos": [
+        430,
+        190
+      ],
+      "size": [
+        130,
+        60
+      ],
+      "sublabel": "중요 개수 표시"
+    },
+    {
+      "id": "aList",
+      "type": "frontend",
+      "label": "NoteList",
+      "pos": [
+        600,
+        190
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sublabel": "props: notes"
+    },
+    {
+      "id": "aCard",
+      "type": "frontend",
+      "label": "NoteCard",
+      "pos": [
+        600,
+        330
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "sublabel": "props: note"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "끌어올리기 전",
+      "wraps": [
+        "bApp",
+        "bHeader",
+        "bCard"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "끌어올린 후",
+      "wraps": [
+        "aApp",
+        "aHeader",
+        "aList",
+        "aCard"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "b1",
+      "from": "bApp",
+      "to": "bHeader",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "b2",
+      "from": "bApp",
+      "to": "bCard",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "a-header",
+      "from": "aApp",
+      "to": "aHeader",
+      "variant": "emphasis",
+      "fromSide": "left",
+      "toSide": "top"
+    },
+    {
+      "id": "a-notes",
+      "from": "aApp",
+      "to": "aList",
+      "label": "notes",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [
+        670,
+        150
+      ]
+    },
+    {
+      "id": "a-note",
+      "from": "aList",
+      "to": "aCard",
+      "label": "note",
+      "variant": "emphasis",
+      "labelAt": [
+        670,
+        290
+      ]
+    },
+    {
+      "id": "a-call",
+      "from": "aCard",
+      "to": "aApp",
+      "label": "onToggleImportant, onDelete",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "right",
+      "via": [
+        [
+          860,
+          360
+        ],
+        [
+          860,
+          80
+        ]
+      ]
+    }
+  ]
+}

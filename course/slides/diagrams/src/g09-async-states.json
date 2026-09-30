@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "비동기 상태 전이 (TipList의 status)",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "화면 · 컴포넌트"
+        },
+        "backend": {
+          "label": "실행되는 코드"
+        },
+        "database": {
+          "label": "데이터 · state"
+        },
+        "cloud": {
+          "label": "도구 · 배포"
+        },
+        "security": {
+          "label": "주의 · 인증"
+        },
+        "messagebus": {
+          "label": "이벤트"
+        },
+        "external": {
+          "label": "사용자 · 바깥"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "loading",
+      "type": "database",
+      "label": "status: 'loading'",
+      "pos": [
+        40,
+        150
+      ],
+      "size": [
+        160,
+        60
+      ],
+      "sublabel": "화면: 불러오는 중…"
+    },
+    {
+      "id": "success",
+      "type": "database",
+      "label": "status: 'success'",
+      "pos": [
+        290,
+        70
+      ],
+      "size": [
+        160,
+        60
+      ],
+      "sublabel": "tips에 결과 저장"
+    },
+    {
+      "id": "error",
+      "type": "database",
+      "label": "status: 'error'",
+      "pos": [
+        290,
+        270
+      ],
+      "size": [
+        160,
+        60
+      ],
+      "sublabel": "요청 실패"
+    },
+    {
+      "id": "list",
+      "type": "frontend",
+      "label": "팁 목록",
+      "pos": [
+        540,
+        20
+      ],
+      "size": [
+        160,
+        60
+      ],
+      "sublabel": "tips가 있을 때"
+    },
+    {
+      "id": "empty",
+      "type": "frontend",
+      "label": "빈 상태 화면",
+      "pos": [
+        540,
+        120
+      ],
+      "size": [
+        160,
+        60
+      ],
+      "sublabel": "tips가 빈 목록일 때"
+    },
+    {
+      "id": "errscreen",
+      "type": "frontend",
+      "label": "에러 안내",
+      "pos": [
+        540,
+        270
+      ],
+      "size": [
+        160,
+        60
+      ],
+      "sublabel": "다시 시도 버튼"
+    }
+  ],
+  "connections": [
+    {
+      "id": "ok",
+      "from": "loading",
+      "to": "success",
+      "label": "성공",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fail",
+      "from": "loading",
+      "to": "error",
+      "label": "실패",
+      "variant": "security"
+    },
+    {
+      "id": "has-data",
+      "from": "success",
+      "to": "list",
+      "variant": "emphasis"
+    },
+    {
+      "id": "no-data",
+      "from": "success",
+      "to": "empty",
+      "variant": "emphasis"
+    },
+    {
+      "id": "show-error",
+      "from": "error",
+      "to": "errscreen",
+      "variant": "security"
+    },
+    {
+      "id": "retry",
+      "from": "errscreen",
+      "to": "loading",
+      "label": "다시 시도",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "bottom"
+    }
+  ]
+}

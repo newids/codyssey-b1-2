@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "메모 앱 컴포넌트 트리",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "화면 · 컴포넌트"
+        },
+        "backend": {
+          "label": "실행되는 코드"
+        },
+        "database": {
+          "label": "데이터 · state"
+        },
+        "cloud": {
+          "label": "도구 · 배포"
+        },
+        "security": {
+          "label": "주의 · 인증"
+        },
+        "messagebus": {
+          "label": "이벤트"
+        },
+        "external": {
+          "label": "사용자 · 바깥"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "App",
+      "type": "frontend",
+      "label": "App",
+      "pos": [
+        360,
+        40
+      ],
+      "size": [
+        120,
+        60
+      ],
+      "sublabel": "앱 전체"
+    },
+    {
+      "id": "Header",
+      "type": "frontend",
+      "label": "Header",
+      "pos": [
+        40,
+        180
+      ],
+      "size": [
+        120,
+        60
+      ],
+      "sublabel": "제목 영역"
+    },
+    {
+      "id": "NoteForm",
+      "type": "frontend",
+      "label": "NoteForm",
+      "pos": [
+        200,
+        180
+      ],
+      "size": [
+        120,
+        60
+      ],
+      "sublabel": "메모 작성 폼"
+    },
+    {
+      "id": "NoteList",
+      "type": "frontend",
+      "label": "NoteList",
+      "pos": [
+        360,
+        180
+      ],
+      "size": [
+        120,
+        60
+      ],
+      "sublabel": "메모 목록"
+    },
+    {
+      "id": "TipList",
+      "type": "frontend",
+      "label": "TipList",
+      "pos": [
+        520,
+        180
+      ],
+      "size": [
+        120,
+        60
+      ],
+      "sublabel": "React 팁"
+    },
+    {
+      "id": "Footer",
+      "type": "frontend",
+      "label": "Footer",
+      "pos": [
+        680,
+        180
+      ],
+      "size": [
+        120,
+        60
+      ],
+      "sublabel": "꼬리말"
+    },
+    {
+      "id": "NoteCard1",
+      "type": "frontend",
+      "label": "NoteCard",
+      "pos": [
+        230,
+        320
+      ],
+      "size": [
+        110,
+        60
+      ],
+      "sublabel": "메모 한 장"
+    },
+    {
+      "id": "NoteCard2",
+      "type": "frontend",
+      "label": "NoteCard",
+      "pos": [
+        365,
+        320
+      ],
+      "size": [
+        110,
+        60
+      ],
+      "sublabel": "메모 한 장"
+    },
+    {
+      "id": "NoteCard3",
+      "type": "frontend",
+      "label": "NoteCard",
+      "pos": [
+        500,
+        320
+      ],
+      "size": [
+        110,
+        60
+      ],
+      "sublabel": "… 여러 개"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "3일 차",
+      "wraps": [
+        "NoteForm"
+      ],
+      "pad": 14
+    },
+    {
+      "kind": "security-group",
+      "label": "3일 차",
+      "wraps": [
+        "TipList"
+      ],
+      "pad": 14
+    }
+  ],
+  "connections": [
+    {
+      "id": "a-h",
+      "from": "App",
+      "to": "Header",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "a-f",
+      "from": "App",
+      "to": "NoteForm",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "a-l",
+      "from": "App",
+      "to": "NoteList",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "a-t",
+      "from": "App",
+      "to": "TipList",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "a-ft",
+      "from": "App",
+      "to": "Footer",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "l-1",
+      "from": "NoteList",
+      "to": "NoteCard1",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "l-2",
+      "from": "NoteList",
+      "to": "NoteCard2",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "l-3",
+      "from": "NoteList",
+      "to": "NoteCard3",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ]
+}
