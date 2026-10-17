@@ -1,2 +1,4 @@
+# pnpm 12는 의존성의 설치 스크립트를 기본 차단한다.
+# esbuild는 플랫폼별 바이너리를 optionalDependencies로 받으므로 postinstall 없이도 동작한다.
 allowBuilds:
-  esbuild: set this to true or false
+  esbuild: false
