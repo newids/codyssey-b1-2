@@ -151,7 +151,7 @@ vercel --prod --yes
 | 배포 URL | https://codyssey-b1-2-react.vercel.app |
 | Vercel 프로젝트 | `jss-projects/codyssey-b1-2` |
 | Supabase 프로젝트 | `codyssey-b1-2` (ref `tpkuinfsgsjwthwnxxqq`, Seoul) |
-| 마이그레이션 | `20260921000000_init.sql` 적용 완료 |
+| 마이그레이션 | `20260921000000_init.sql`, `20260922000000_profiles_email_privacy.sql` 적용 완료 |
 | 환경변수 | Vercel production / preview / development 3곳 등록 완료 |
 | Auth Site URL / Redirect URLs | `supabase config push`로 반영 완료 (2026-09-22) |
 | 이메일 매직 링크 로그인 | 동작 (Supabase 기본 설정) |

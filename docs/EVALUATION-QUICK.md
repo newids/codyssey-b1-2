@@ -73,3 +73,5 @@ props는 부모가 주는 읽기 전용 인자, state는 컴포넌트가 스스�
 | Vercel에서 `/notes/abc` 새로고침이 404가 아닌 이유? | `vercel.json` rewrite가 모든 경로를 `index.html`로 돌려주고, 브라우저에서 React Router가 경로를 해석합니다. |
 | anon 키가 브라우저에 보이는데 괜찮나요? | 공개 키입니다. 보안 경계는 RLS. 쓰기·수정·삭제는 `auth.uid() = user_id`, 프로필 이메일 컬럼은 anon/authenticated에 select 권한을 뺐습니다. |
 | 검색어를 왜 URL에 두나요? | 새로고침·링크 공유에도 같은 화면. `useSearchParams`. 입력은 300ms 디바운스 후 요청. |
+| 왜 Supabase인가요? 힘들었던 점은? | 서버 코드 없이 Postgres·REST·Auth·RLS를 한 번에, 권한은 DB에서 강제. 힘들었던 건 조인으로 남의 이메일이 새던 것(컬럼 단위 grant로 막음), Google 동의 화면의 supabase.co 도메인(GIS + `signInWithIdToken`으로 교체), 별칭 도메인의 `origin_mismatch`(호스트 리다이렉트), 새로고침 때 세션 복원 전에 튕기던 것(`isReady`). README "Supabase를 고른 이유" 표 참고. |
+| 저장 뒤 목록은 어떻게 갱신되나요? | 낙관적 업데이트가 아니라 재조회. `navigate()`로 경로가 바뀌면 `useNote`/`useNotes`의 fetcher가 바뀌어 `useAsync`가 다시 요청합니다. 레슨 완료 토글만 낙관적(즉시 반영, 실패 시 롤백). |

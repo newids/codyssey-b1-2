@@ -136,6 +136,7 @@ React 18.3 · TypeScript 5.5 · React Router 6.26 · @supabase/supabase-js 2.x �
 - `vercel.json` `rewrites: /(.*) → /index.html` — 딥링크·새로고침 시 SPA 라우팅 유지.
 - 환경변수 누락 시 `lib/supabase.ts` `assertSupabaseEnv()`가 시작 즉시 throw → "일부만 동작"하는 상태가 생기지 않는다.
 - 배포 URL에서 §6 QA 시나리오로 목록/상세/등록/수정/삭제 확인.
+- **실행 증거**: 2026-10-17 배포 URL에서 등록(POST 201) → 수정(PATCH 200) → 삭제(DELETE 204)를 실제 수행한 화면 7장, 브라우저 요청 로그, anon 키 REST 조회로 서버 반영을 대조한 기록이 [DEPLOY-VERIFICATION.md](DEPLOY-VERIFICATION.md)에 있다.
 
 ### 2.9 보너스
 
