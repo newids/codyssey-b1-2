@@ -2,6 +2,8 @@
 
 React 18 + React Router 6 + Supabase로 만든 **React 학습용 SPA**입니다. 8개 레슨(컴포넌트 → props/state → 이벤트·렌더링 → useEffect → 라우팅 → 폼 → 로딩/에러/빈 상태 → 커스텀 훅)을 읽고, 레슨마다 연습 문제를 풀고, 배운 것을 **학습 노트**로 남깁니다. 로그인하면 **진도**와 **퀴즈 점수**가 기록됩니다. (Codyssey B1-2 미션)
 
+백엔드는 **Firebase 대신 Supabase**를 골랐습니다. SQL 조인과 컬럼 단위 권한, 행 수준 보안(RLS), git에 남는 마이그레이션 파일이 필요했기 때문입니다. **인증은 Supabase Auth**로, Google 로그인(Google Identity Services 버튼 → ID 토큰 → `signInWithIdToken`)과 이메일 매직 링크를 지원하며, 보호 라우트 3개는 `ProtectedRoute`가 막습니다. 비교와 겪은 문제는 [아래 절](#supabase를-고른-이유와-연동하며-겪은-문제)에 있습니다.
+
 - **배포 URL**: https://codyssey-b1-2-react.vercel.app
 - **저장소**: https://github.com/newids/codyssey-b1-2
 - **디자인 캔버스(Claude Design)**: https://claude.ai/artifact/9aihqFBtrWy3mQXXe1zvNU — 글래스모피즘 디자인 시스템(색·유리 재질·타이포·컨트롤)과 홈/레슨/모바일 목업
@@ -76,7 +78,7 @@ Supabase 프로젝트 생성·스키마·Google 로그인·Vercel 배포 절차�
 | UI | React 18.3 (함수 컴포넌트 + 훅), TypeScript 5.5 |
 | 라우팅 | React Router 6.26 — 라우트 10개, 중첩 레이아웃, 보호 라우트, `useParams` / `useSearchParams` |
 | 상태 | 지역 state(`useState`), 전역 Context 3개(Auth · Theme · Toast), 커스텀 훅 6개, `useMemo` / `useCallback` / `React.memo` |
-| 백엔드 | Supabase (Postgres + Auth + RLS). `@supabase/supabase-js` 2.x |
+| 백엔드 | Supabase (Postgres + Auth + RLS). `@supabase/supabase-js` 2.x. Firebase 대신 고른 이유는 [Supabase를 고른 이유](#supabase를-고른-이유와-연동하며-겪은-문제) |
 | 인증 | Supabase Auth — Google 로그인(Google Identity Services 버튼 + `signInWithIdToken`, nonce 검증), 이메일 매직 링크 |
 | 스타일 | 글래스모피즘 — 오로라 배경(60초 주기 드리프트) 위 반투명 유리 표면(`backdrop-filter`), 긴 본문은 86% 읽기 플레이트. CSS Modules + CSS 커스텀 프로퍼티(oklch, clamp()), Pretendard + JetBrains Mono, 다크/라이트 모드, `prefers-reduced-motion`이면 배경 정지. 방향 계약은 `index.html` `<body>` 첫 주석, 시스템 문서는 `DESIGN.md` |
 | 빌드·테스트 | Vite 5, Vitest 2 + Testing Library |
@@ -98,6 +100,7 @@ Supabase 프로젝트 생성·스키마·Google 로그인·Vercel 배포 절차�
 | `*` | NotFoundPage | | 404 |
 
 - **전역 네비게이션**은 `src/components/layout/Header.tsx`의 `NAV_ITEMS`(레슨 · 학습 노트 · 내 진도)입니다. `NavLink`가 현재 경로를 강조하고, 768px 아래에서는 햄버거 메뉴로 접힙니다. 로그인 상태면 이름·아바타(→ `/profile`)와 로그아웃이 붙습니다.
+- **라우팅과 권한 흐름 한 문단.** `BrowserRouter` 아래 `<Routes>`가 URL을 `Layout`(헤더·푸터·`<Outlet>`) 안의 페이지에 연결합니다. `/notes/new`, `/notes/:id/edit`, `/profile`은 `ProtectedRoute` 아래에 있어서, `AuthContext.isReady`가 false인 동안은 로딩만 보이고, 복원이 끝난 뒤 `user`가 없으면 `/login`으로 보내면서 원래 경로를 `state.from`에 실어 둡니다. 로그인 성공 시 그 경로로 복귀합니다. 다른 사람의 노트 수정 페이지에 들어가면 UI는 "권한이 없습니다"를 보여 주고, API를 직접 호출해도 RLS가 `auth.uid() = user_id`로 거부합니다([검증 기록 §5](docs/DEPLOY-VERIFICATION.md)).
 - **팝업 vs 전체 페이지 결정 로직** (`src/App.tsx`): `location.state.backgroundLocation`이 **있으면** 첫 번째 `<Routes location={background}>`가 이전 화면을 그대로 그리고, 두 번째 `<Routes>`가 그 위에 `NoteComposerModal`을 얹습니다. **없으면**(새로고침 · 주소 직접 입력 · 외부 링크) 첫 번째 `<Routes>`가 `NoteNewPage` 전체 페이지를 그립니다. 팝업을 닫으면 `navigate(-1)`로 배경 경로로 돌아가고, 배경이 없을 땐 `/notes`로 갑니다. 두 경우 모두 `ProtectedRoute` 아래라 비로그인은 `/login`으로 보냅니다.
 
 ## 폴더 구조
@@ -112,7 +115,7 @@ src/
     notes/          NoteCard, NoteGrid, NoteForm, NoteComposer, NoteComposerModal(팝업)
     lessons/        LessonCard, LessonContent, Quiz
     auth/           ProtectedRoute
-  hooks/            useAsync, useNotes(useNote), useNoteForm, useLessonProgress, useQuizAttempts, useDebounce, useOpenNoteComposer
+  hooks/            7개 — 아래 "훅별 책임" 표
   context/          AuthContext, ThemeContext, ToastContext
   lib/              supabase 클라이언트, api/(notes · progress · auth), validation, errors, format, quiz, types
   data/lessons/     레슨 8개 본문 + 퀴즈 (레슨마다 파일 하나, 정적 데이터)
@@ -131,6 +134,18 @@ docs/               가이드 · 평가 설명서 · 설정 가이드
 | `hooks/` | 상태 전이 · 비동기 로직 | JSX가 없고 `useState`/`useEffect`가 있는가? 둘 이상의 화면이 같은 전이를 쓰는가? |
 | `lib/` | React를 모르는 코드 | 훅도 JSX도 없이 Node에서 그대로 테스트되는가? (`validateNote`, `toUserMessage`, API 함수) |
 
+**훅별 책임** (`src/hooks/`)
+
+| 훅 | 소유하는 상태 | 사이드이펙트 | 분리한 이유 |
+| --- | --- | --- | --- |
+| `useAsync(fetcher)` | `status · data · error` | `useEffect`로 요청, cleanup `cancelled` | 모든 조회의 상태 전이를 한 곳에. 단독 테스트 가능 |
+| `useNotes(params)` / `useNote(id)` | (useAsync 위임) | fetcher를 `useCallback`으로 고정 | "조건이 바뀔 때만 재요청" 계약을 이름으로 드러냄. 페이지가 Supabase를 모르게 |
+| `useNoteForm(initial)` | `values · touched · submitStatus · submitError` | `onSubmit` 호출, 에러 → 사용자 문장 변환 | controlled input의 단일 출처. 등록·수정 폼이 같은 전이를 공유 |
+| `useLessonProgress(userId)` | 서버 진도 + `optimistic` 덮어쓰기 | upsert/delete, 실패 시 롤백 | 상세·목록·프로필 3곳이 같은 진도를 읽음 |
+| `useQuizAttempts(userId)` | 시도 목록, 레슨별 최고점(`useMemo`) | 채점 결과 insert | 최고점 계산을 화면에서 분리 |
+| `useDebounce(value, ms)` | 지연된 복사본 | `setTimeout` + cleanup | 검색 입력을 300ms 뒤에만 요청으로 바꿈 |
+| `useOpenNoteComposer()` | 없음 | `navigate(…, { state: { backgroundLocation } })` | 팝업을 여는 규칙을 3개 화면이 공유 |
+
 **훅을 페이지에서 분리한 이유.** ① `useAsync`를 가짜 fetcher로 단독 테스트할 수 있어 경쟁 상태·cleanup·재요청 계약을 `useAsync.test.tsx`에서 고정했습니다. ② 페이지는 Supabase를 모릅니다. API 계층을 바꿔도 페이지는 그대로입니다. ③ "떠난 화면에 늦은 응답 반영 금지"(`cancelled` 플래그) 같은 규칙을 한 곳에만 둡니다. ④ `useNotes`와 `useNote`는 fetcher를 `useCallback`으로 고정해 **조회 조건이 바뀔 때만** 재요청한다는 약속을 이름으로 드러냅니다.
 
 ## props와 state — 어디에 두는가
@@ -144,6 +159,20 @@ docs/               가이드 · 평가 설명서 · 설정 가이드
 3. **끌어올리다 최상단까지 가면** Context로 뺍니다(로그인 사용자 · 테마 · 알림, 세 개뿐).
 4. **새로고침·링크 공유에도 남아야 하면** state가 아니라 URL(`useSearchParams`)에 둡니다.
 5. **서버 데이터는** 훅(`useAsync`)이 소유하고 페이지는 결과만 받습니다. 페이지가 복사본을 들고 있지 않습니다.
+
+**props 흐름 예시 — 노트 목록 화면** (데이터 ↓ props, 이벤트 ↑ 콜백)
+
+```
+NoteListPage                      state: search(지역) · URL ?q=&lesson=&filter= · notes(useNotes)
+ ├─ <Input value={search} onChange={setSearch} />         ↓ value   ↑ onChange(이벤트를 올림)
+ ├─ <Select value={lesson} onChange={setParam} />         ↓ value   ↑ onChange
+ ├─ <AsyncBoundary status={notes.status} isEmpty=…>       ↓ status/error (판단은 부모가, 그리기는 자식이)
+ │   └─ <NoteGrid notes={notes.data}>                     ↓ notes[]
+ │       └─ <NoteCard note={…} />  (React.memo)           ↓ note     — 자기 state 없음, 클릭은 <Link>
+ └─ <Button onClick={openComposer}>                        ↑ onClick → navigate(state.backgroundLocation)
+```
+
+`Input`·`NoteCard`는 받은 props만 그립니다. 값을 바꾸는 쪽은 언제나 그 값을 소유한 `NoteListPage`입니다.
 
 | 값 | 소유자 | 규칙 | 파일 |
 | --- | --- | --- | --- |
@@ -189,6 +218,9 @@ docs/               가이드 · 평가 설명서 · 설정 가이드
 | 그 외 | "요청에 실패했습니다. (원문)" | `toUserMessage` |
 
 원칙: 무엇이 잘못됐는지 + 어떻게 하면 되는지를 한 문장에, 존댓말, 기술 용어·상태 코드는 노출하지 않습니다. 검증 에러는 blur 또는 제출 뒤에만 보입니다(타이핑 중엔 조용히).
+
+- **재시도 정책.** 자동 재시도(지수 백오프)는 두지 않았습니다. 조회 실패는 `ErrorState`의 "다시 시도" 버튼이 `refetch()`(`tick` 증가)로 같은 조건을 다시 요청하고, 제출 실패는 폼 값이 그대로 남아 사용자가 다시 저장을 누릅니다. 학습용 트래픽에서는 자동 재시도가 오류를 숨기고 중복 쓰기를 만들 위험이 더 컸기 때문입니다. `supabase-js`의 토큰 자동 갱신(`autoRefreshToken`)만 켜 두었습니다.
+- **목록 렌더 성능.** `NoteCard`·`LessonCard`는 `React.memo`, 필터·최고점 계산은 `useMemo`입니다. 가상화(virtualization)는 쓰지 않았습니다. 레슨은 8개, 노트 목록은 서버에서 필터된 수십 건 수준이라 DOM 수가 문제가 되지 않고, 가상화는 스크롤 복원·검색 하이라이트를 복잡하게 만들기 때문입니다. 수백 건을 넘기면 페이지네이션(`range()`)을 먼저 붙일 계획입니다.
 
 ## 핵심 데이터 흐름 (하나의 기능이 관통하는 경로)
 
@@ -242,6 +274,21 @@ useEffect(() => {
 - Google · 이메일 링크 로그인이 내장돼 있고, `supabase-js`가 세션 복원과 토큰 갱신을 처리합니다.
 - SQL이라 `profiles` 조인 같은 관계를 그대로 쓰고, 스키마를 `supabase/migrations/*.sql`로 **git에 둘 수** 있습니다. (Firebase는 스키마가 코드 밖에 있고 조인이 없어서 제외)
 - 무료 티어로 충분하고 서울 리전이 있습니다.
+
+**Supabase vs Firebase — 이 미션 기준 비교**
+
+| 기준 | Supabase (선택) | Firebase (Firestore + Auth) |
+| --- | --- | --- |
+| 데이터 모델 | Postgres. `notes → profiles` 조인, 정렬·검색(`ilike`)을 쿼리 한 줄로 | 문서 DB. 조인이 없어 작성자 정보를 노트에 복제하거나 요청을 두 번 |
+| 권한 | RLS 정책 + 컬럼 단위 `grant`. "이메일 컬럼만 숨기기"가 SQL 두 줄 | 보안 규칙이 문서 단위. 필드 하나만 숨기려면 컬렉션을 쪼개야 함 |
+| 스키마 관리 | `supabase/migrations/*.sql`이 git에 남고 CLI로 재현 | 스키마가 코드 밖(콘솔)에 있어 리뷰·재현이 어려움 |
+| 인증 | Google·이메일 링크 내장, `signInWithIdToken`으로 외부 ID 토큰 교환 가능 | 인증은 성숙하지만 DB 권한과 별도 규칙 언어로 연결 |
+| 학습 가치 | SQL·RLS·REST를 그대로 배움 | SDK 추상화가 두꺼워 "무엇이 서버인지" 보기 어려움 |
+| 단점 | 무료 티어 프로젝트가 1주 미사용 시 일시 정지, CLI가 키체인·IPv6 문제로 가끔 번거로움 | 오프라인 캐시·실시간 동기화는 더 쉬움 |
+
+실시간 동기화나 오프라인 우선이 핵심이었다면 Firebase가 나았겠지만, 이 미션의 핵심은 "원격 CRUD + 권한 + 배포"라 Supabase가 맞았습니다.
+
+**인증 방식.** Supabase Auth를 씁니다. Google 로그인은 Google Identity Services 버튼이 돌려주는 **ID 토큰**을 `supabase.auth.signInWithIdToken({ provider: 'google', token, nonce })`로 교환합니다(nonce는 Google에 SHA-256 해시, Supabase에 원본). 이메일 매직 링크(`signInWithOtp`)도 있습니다. 세션은 `localStorage`에 저장되고 토큰은 자동 갱신되며, `AuthContext`가 `getSession()` + `onAuthStateChange`로 사용자 상태를 트리 전체에 공급합니다. 보호 라우트 3개는 `ProtectedRoute`가 막고, 쓰기 권한은 최종적으로 DB의 RLS(`auth.uid() = user_id`)가 결정합니다.
 
 **실제로 부딪힌 문제와 해결**
 

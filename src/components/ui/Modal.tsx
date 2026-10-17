@@ -18,6 +18,7 @@ export interface ModalProps {
 export function Modal({ title, description, onClose, size = 'md', children }: ModalProps) {
   const ref = useRef<HTMLDialogElement>(null);
 
+  // 마운트 시 showModal, 언마운트 시 close. onClose 는 부모가 useCallback 으로 고정해 effect 가 매 렌더링마다 재실행되지 않는다.
   useEffect(() => {
     const dialog = ref.current;
     if (!dialog) return;

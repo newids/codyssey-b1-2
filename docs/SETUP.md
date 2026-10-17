@@ -152,7 +152,17 @@ vercel --prod --yes
 | Vercel 프로젝트 | `jss-projects/codyssey-b1-2` |
 | Supabase 프로젝트 | `codyssey-b1-2` (ref `tpkuinfsgsjwthwnxxqq`, Seoul) |
 | 마이그레이션 | `20260921000000_init.sql`, `20260922000000_profiles_email_privacy.sql` 적용 완료 |
-| 환경변수 | Vercel production / preview / development 3곳 등록 완료 |
+| 환경변수 | Vercel production / preview / development 3곳 등록 완료 — 아래 스냅샷 |
 | Auth Site URL / Redirect URLs | `supabase config push`로 반영 완료 (2026-09-22) |
 | 이메일 매직 링크 로그인 | 동작 (Supabase 기본 설정) |
 | Google 로그인 | 설정 완료 (2026-09-22). GIS 버튼 + `signInWithIdToken` 방식, `VITE_GOOGLE_CLIENT_ID` Vercel 3환경 등록 |
+
+### Vercel 환경변수 스냅샷 (`vercel env ls`, 2026-10-17)
+
+| 이름 | Production | Preview | Development | 값 |
+| --- | --- | --- | --- | --- |
+| `VITE_SUPABASE_URL` | ✓ (Secret) | ✓ (Secret) | ✓ | `https://<ref>.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY` | ✓ (Secret) | ✓ (Secret) | ✓ | Supabase 대시보드 → Project Settings → API → anon public |
+| `VITE_GOOGLE_CLIENT_ID` | ✓ (Secret) | ✓ (Secret) | ✓ | Google Cloud → OAuth 클라이언트 ID (`….apps.googleusercontent.com`) |
+
+세 값 모두 **공개돼도 되는 값**입니다(anon 키의 보안 경계는 RLS). `service_role` 키는 어디에도 두지 않습니다. 재현할 때는 `vercel env pull .env.local`로 development 값을 받을 수 있습니다.

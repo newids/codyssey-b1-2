@@ -19,6 +19,7 @@ function FlowDemo() {
   const [count, setCount] = useState(0);
   const [litStage, setLitStage] = useState(-1);
 
+  // litStage 가 바뀔 때마다 타이머를 다시 건다. cleanup 이 이전 타이머를 지우므로 겹치지 않는다. -1 이면 정지.
   useEffect(() => {
     if (litStage < 0) return;
     if (litStage >= STAGES.length - 1) {

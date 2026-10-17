@@ -58,3 +58,14 @@ anon 키로 읽힌 이유는 노트가 `is_public = true`이기 때문입니다.
 
 - **노트 CRUD는 재조회(refetch) 방식.** 등록·수정·삭제 성공 뒤 `navigate()`로 경로를 바꾸면 `useNote(id)` / `useNotes(params)`의 fetcher 참조가 바뀌어 `useAsync`의 `useEffect`가 다시 요청합니다. 위 로그에서 PATCH·DELETE 직후 GET이 따라오는 것이 그 증거입니다. 서버를 단일 진실로 두어 낙관적 업데이트의 롤백 로직을 노트에는 두지 않았습니다.
 - **레슨 완료 토글만 낙관적 업데이트.** `useLessonProgress`는 클릭 즉시 배지를 바꾸고, 실패하면 이전 값으로 되돌립니다. 진도 표시는 즉시 반응이 중요하고 실패 비용이 낮기 때문입니다.
+
+## 5. 실패 케이스 — 권한이 없으면 서버가 거부한다
+
+같은 anon 키로 **로그인 없이** 쓰기를 시도한 실제 응답입니다 (2026-10-17 16:05 KST).
+
+| 시도 | 응답 |
+| --- | --- |
+| `POST /rest/v1/notes` (제목·내용 포함) | HTTP 401 `{"code":"42501","message":"new row violates row-level security policy for table \"notes\""}` |
+| `GET /rest/v1/profiles?select=id,email` | HTTP 401 `{"code":"42501","message":"permission denied for table profiles"}` — 이메일 컬럼은 anon/authenticated에 select 권한이 없음 |
+
+앱에서는 이런 응답이 `toUserMessage()`를 거쳐 "권한이 없습니다. 로그인 상태를 확인해 주세요."로 바뀌어 `ErrorState`(조회) 또는 폼 아래 `submitError`(제출)로 표시됩니다. UI의 `ProtectedRoute`는 편의 장치이고, 권한의 최종 결정은 DB의 RLS입니다.
